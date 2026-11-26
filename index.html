@@ -47,13 +47,13 @@
     /* Container: positioned in stage arch area */
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: clamp(760px, 64vw, 1200px);
       position: relative;
       z-index: 5;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: calc(clamp(125px, 14.5vh, 155px) + 1cm);
+      margin-top: clamp(82px, 11.5vh, 130px);
     }
 
     /* ========================================================
@@ -71,7 +71,7 @@
         inset 0 0 20px rgba(246, 192, 52, 0.24);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: clamp(18px, 2.4vh, 26px) clamp(20px, 2.4vw, 32px) clamp(10px, 1.3vh, 16px);
+      padding: clamp(16px, 2.2vh, 26px) clamp(10px, 1.4vw, 20px) clamp(4px, 0.6vh, 10px);
       box-sizing: border-box;
 
       /* Initially hidden - emerges 'from nowhere' */
@@ -158,10 +158,10 @@
     /* Docked state atop points table */
     .hero-headtag-wrapper.docked {
       position: absolute !important;
-      top: calc(-118px - 0.25cm) !important;
+      top: -105px !important;
       left: 50% !important;
       transform: translateX(-50%) !important;
-      width: clamp(350px, 40vw, 520px) !important;
+      width: clamp(300px, 32vw, 460px) !important;
       height: auto !important;
       pointer-events: auto;
       z-index: 25;
@@ -249,20 +249,52 @@
       }
     }
 
-    /* Replay Button */
-    .replay-btn {
+    /* Top Right Utility Controls */
+    .top-actions-wrap {
       position: fixed;
       top: 18px;
       right: 18px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .utility-pill-btn {
+      background: rgba(18, 9, 44, 0.88);
+      border: 1.5px solid rgba(0, 210, 255, 0.65);
+      color: #64fcfc;
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .utility-pill-btn:hover {
+      background: rgba(30, 15, 70, 0.95);
+      border-color: #00ffff;
+      box-shadow: 0 0 16px rgba(0, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Replay Button */
+    .replay-btn {
       background: rgba(18, 9, 44, 0.88);
       border: 1.5px solid rgba(246, 192, 52, 0.65);
       color: #ffe066;
-      padding: 8px 16px;
+      padding: 7px 15px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 800;
       cursor: pointer;
-      z-index: 999;
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.55);
       display: flex;
@@ -486,30 +518,26 @@
     .table-responsive {
       width: 100%;
       overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(246, 192, 52, 0.5) transparent;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     .table-responsive::-webkit-scrollbar {
-      height: 6px;
-    }
-    .table-responsive::-webkit-scrollbar-thumb {
-      background: rgba(246, 192, 52, 0.5);
-      border-radius: 4px;
+      display: none;
     }
 
     .points-table {
       width: 100%;
       border-collapse: separate;
-      border-spacing: 0 clamp(7px, 1.0vh, 12px);
-      min-width: 720px;
+      border-spacing: 0 clamp(3px, 0.45vh, 6px);
+      min-width: 0;
     }
 
     /* ========================================================
        HEADERS
        ======================================================== */
     .points-table thead tr th {
-      padding: clamp(6px, 0.9vh, 10px) 6px;
+      padding: clamp(4px, 0.6vh, 8px) 2px;
       vertical-align: middle;
       font-weight: 800;
       border: none;
@@ -518,9 +546,9 @@
 
     /* TEAM Header */
     .col-team-head {
-      width: 25%;
+      width: 26%;
       text-align: left;
-      padding-left: clamp(14px, 1.8vw, 24px) !important;
+      padding-left: clamp(8px, 1.2vw, 16px) !important;
     }
 
     .team-header-pill {
@@ -528,21 +556,21 @@
       align-items: center;
       gap: 8px;
       color: #ffd700;
-      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+      font-size: clamp(0.95rem, 1.2vw, 1.2rem);
       font-weight: 900;
       letter-spacing: 0.8px;
       text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
 
     .team-header-pill .crown-icon-sm {
-      width: 24px;
-      height: 20px;
+      width: 22px;
+      height: 18px;
       filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.75));
     }
 
     /* ROUND 1-5 Headers (Dark Sleek Capsules with Silver Rim) */
     .col-round-head {
-      width: 12%;
+      width: 11.5%;
       text-align: center;
     }
 
@@ -550,7 +578,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(5px, 0.7vh, 7px) clamp(14px, 1.6vw, 20px);
+      padding: clamp(3px, 0.5vh, 5px) clamp(6px, 0.8vw, 12px);
       border-radius: 999px;
       background: linear-gradient(180deg, #32254f 0%, #170d2c 100%);
       border: 1.8px solid #958ba8;
@@ -558,7 +586,7 @@
         inset 0 1px 2px rgba(255, 255, 255, 0.4),
         0 3px 8px rgba(0, 0, 0, 0.5);
       color: #ffffff;
-      font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+      font-size: clamp(0.72rem, 0.85vw, 0.84rem);
       font-weight: 800;
       letter-spacing: 0.5px;
       text-transform: uppercase;
@@ -575,7 +603,7 @@
 
     /* TOTAL Header with Perched 3D Crown */
     .col-total-head {
-      width: 15%;
+      width: 14%;
       text-align: center;
       position: relative;
     }
@@ -585,7 +613,7 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      margin-top: 14px;
+      margin-top: clamp(8px, 1.2vh, 14px);
     }
 
     .crown-total-perched {
@@ -593,8 +621,8 @@
       top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      width: clamp(38px, 4.2vw, 48px);
-      height: clamp(24px, 2.6vw, 30px);
+      width: clamp(34px, 3.8vw, 46px);
+      height: clamp(22px, 2.4vw, 28px);
       z-index: 10;
       pointer-events: none;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.75));
@@ -610,7 +638,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(5px, 0.7vh, 7px) clamp(18px, 2.2vw, 26px);
+      padding: clamp(3px, 0.5vh, 5px) clamp(10px, 1.2vw, 16px);
       border-radius: 12px;
       background: linear-gradient(180deg, rgba(45, 20, 75, 0.85) 0%, rgba(20, 8, 38, 0.95) 100%);
       border: 2px solid #ffd700;
@@ -618,7 +646,7 @@
         0 0 14px rgba(255, 215, 0, 0.45),
         inset 0 0 8px rgba(255, 215, 0, 0.2);
       color: #ffd700;
-      font-size: clamp(0.88rem, 1.1vw, 1.05rem);
+      font-size: clamp(0.82rem, 0.95vw, 0.94rem);
       font-weight: 900;
       letter-spacing: 0.8px;
       text-transform: uppercase;
@@ -638,12 +666,13 @@
       border-top: 2.4px solid #f6c034;
       border-bottom: 2.4px solid #b87a00;
       color: #ffffff;
-      padding: clamp(8px, 1.15vh, 12px) clamp(8px, 1.0vw, 14px);
+      padding: clamp(3px, 0.5vh, 8px) 4px;
       text-align: center;
       font-weight: 800;
       position: relative;
       box-shadow: inset 0 1.5px 2px rgba(255, 235, 140, 0.4), inset 0 -1.5px 2px rgba(0, 0, 0, 0.6);
       font-variant-numeric: tabular-nums;
+      font-size: clamp(0.92rem, 1.15vw, 1.15rem);
     }
 
     /* Left Capsule Cap (Team Cell) */
@@ -652,8 +681,8 @@
       border-top-left-radius: 999px;
       border-bottom-left-radius: 999px;
       text-align: left;
-      padding-left: clamp(14px, 1.6vw, 22px);
-      padding-right: clamp(16px, 1.8vw, 24px);
+      padding-left: clamp(10px, 1.2vw, 16px);
+      padding-right: clamp(10px, 1.2vw, 16px);
     }
 
     /* Curved Pill Divider after Team */
@@ -663,7 +692,7 @@
       right: -1px;
       top: -2.4px;
       bottom: -2.4px;
-      width: 22px;
+      width: 20px;
       border-right: 2.4px solid #f6c034;
       border-top-right-radius: 999px;
       border-bottom-right-radius: 999px;
@@ -674,7 +703,7 @@
     /* Middle Round Score Cells */
     .row-capsule td:not(:first-child):not(:last-child) {
       border-right: 1px solid rgba(255, 215, 0, 0.28);
-      font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+      font-size: clamp(0.92rem, 1.15vw, 1.15rem);
       font-weight: 800;
       color: #ffffff;
     }
@@ -685,12 +714,12 @@
       border-top-right-radius: 999px;
       border-bottom-right-radius: 999px;
       color: #ffd700;
-      font-size: clamp(1.35rem, 1.7vw, 1.62rem);
+      font-size: clamp(1.15rem, 1.45vw, 1.55rem);
       font-weight: 900;
       letter-spacing: 0.5px;
       text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
-      padding-left: clamp(14px, 1.8vw, 24px);
-      padding-right: clamp(14px, 1.8vw, 24px);
+      padding-left: clamp(8px, 1.0vw, 16px);
+      padding-right: clamp(8px, 1.0vw, 16px);
     }
 
     /* Curved Pill Divider before Total */
@@ -700,7 +729,7 @@
       left: -1px;
       top: -2.4px;
       bottom: -2.4px;
-      width: 22px;
+      width: 20px;
       border-left: 2.4px solid #f6c034;
       border-top-left-radius: 999px;
       border-bottom-left-radius: 999px;
@@ -716,11 +745,11 @@
     .team-cell {
       display: flex;
       align-items: center;
-      gap: clamp(10px, 1.3vw, 16px);
+      gap: clamp(8px, 1.0vw, 14px);
     }
 
     .team-name {
-      font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+      font-size: clamp(0.95rem, 1.18vw, 1.22rem);
       font-weight: 800;
       color: #ffffff;
       white-space: nowrap;
@@ -2361,8 +2390,60 @@
       // Start live polling every 1.5s
       pollGoogleSheet();
       pollIntervalId = setInterval(pollGoogleSheet, 1500);
+
+      // Fullscreen presentation helper
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => console.log('Fullscreen error:', err));
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(err => console.log('Exit fullscreen error:', err));
+          }
+        }
+      }
+
+      const fsBtn = document.getElementById('fullscreen-btn');
+      if (fsBtn) {
+        fsBtn.addEventListener('click', toggleFullscreen);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if ((e.key === 'f' || e.key === 'F') && !e.ctrlKey && !e.altKey && !e.metaKey && e.target.tagName !== 'INPUT') {
+          toggleFullscreen();
+        }
+      });
+
+      document.addEventListener('fullscreenchange', () => {
+        if (fsBtn) {
+          if (document.fullscreenElement) {
+            fsBtn.innerHTML = `
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+              </svg>
+              <span>Exit Fullscreen</span>
+            `;
+          } else {
+            fsBtn.innerHTML = `
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+              <span>Fullscreen</span>
+            `;
+          }
+        }
+      });
     });
   </script>
+
+  <!-- Top Right Utility Buttons -->
+  <div class="top-actions-wrap">
+    <button id="fullscreen-btn" class="utility-pill-btn" title="Toggle Fullscreen for TV / Presentation (Press F)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+      </svg>
+      <span>Fullscreen</span>
+    </button>
+  </div>
 
   <!-- Round Transition Announcement Overlay -->
   <div id="round-announcement-overlay" class="round-announcement-overlay">
