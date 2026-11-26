@@ -252,7 +252,7 @@
     /* Replay Button */
     .replay-btn {
       position: fixed;
-      bottom: 18px;
+      top: 18px;
       right: 18px;
       background: rgba(18, 9, 44, 0.88);
       border: 1.5px solid rgba(246, 192, 52, 0.65);
@@ -294,6 +294,7 @@
 
     /* Rank Change Row Animation */
     .points-table tbody tr {
+      position: relative;
       transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s ease;
       will-change: transform;
     }
@@ -399,7 +400,7 @@
     /* Live Sheet Sync Pill */
     .live-sync-pill {
       position: fixed;
-      bottom: 18px;
+      top: 18px;
       left: 18px;
       background: rgba(18, 9, 44, 0.88);
       border: 1.5px solid rgba(0, 210, 255, 0.55);
@@ -459,7 +460,7 @@
     .points-table {
       width: 100%;
       border-collapse: separate;
-      border-spacing: 0 clamp(3px, 0.45vh, 6px);
+      border-spacing: 0 clamp(7px, 1.0vh, 12px);
       min-width: 720px;
     }
 
@@ -467,7 +468,7 @@
        HEADERS
        ======================================================== */
     .points-table thead tr th {
-      padding: clamp(8px, 1.1vh, 12px) 8px;
+      padding: clamp(6px, 0.9vh, 10px) 6px;
       vertical-align: middle;
       font-weight: 800;
       border: none;
@@ -484,21 +485,21 @@
     .team-header-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      color: #ffe066;
-      font-size: clamp(1.08rem, 1.35vw, 1.25rem);
+      gap: 8px;
+      color: #ffd700;
+      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
       font-weight: 900;
-      letter-spacing: 1px;
-      text-shadow: 0 0 10px rgba(255, 224, 102, 0.55);
+      letter-spacing: 0.8px;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
 
     .team-header-pill .crown-icon-sm {
-      width: 25px;
-      height: 21px;
+      width: 24px;
+      height: 20px;
       filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.75));
     }
 
-    /* ROUND 1-5 Headers */
+    /* ROUND 1-5 Headers (Dark Sleek Capsules with Silver Rim) */
     .col-round-head {
       width: 12%;
       text-align: center;
@@ -508,15 +509,15 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(6px, 0.8vh, 8px) clamp(12px, 1.4vw, 18px);
+      padding: clamp(5px, 0.7vh, 7px) clamp(14px, 1.6vw, 20px);
       border-radius: 999px;
-      background: rgba(8, 24, 60, 0.88);
-      border: 1.6px solid var(--cyan-border);
+      background: linear-gradient(180deg, #32254f 0%, #170d2c 100%);
+      border: 1.8px solid #958ba8;
       box-shadow: 
-        0 0 12px var(--cyan-glow),
-        inset 0 0 7px rgba(0, 210, 255, 0.28);
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        0 3px 8px rgba(0, 0, 0, 0.5);
       color: #ffffff;
-      font-size: clamp(0.82rem, 1.0vw, 0.94rem);
+      font-size: clamp(0.78rem, 0.95vw, 0.9rem);
       font-weight: 800;
       letter-spacing: 0.5px;
       text-transform: uppercase;
@@ -526,8 +527,8 @@
 
     .round-pill:hover {
       box-shadow: 
-        0 0 18px rgba(0, 210, 255, 0.75),
-        inset 0 0 11px rgba(0, 210, 255, 0.45);
+        0 0 15px rgba(180, 150, 255, 0.65),
+        inset 0 0 8px rgba(255, 255, 255, 0.4);
       transform: translateY(-1px);
     }
 
@@ -543,40 +544,40 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      margin-top: 18px;
+      margin-top: 14px;
     }
 
     .crown-total-perched {
       position: absolute;
-      top: -28px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      width: clamp(56px, 5.8vw, 68px);
-      height: clamp(36px, 3.8vw, 42px);
+      width: clamp(38px, 4.2vw, 48px);
+      height: clamp(24px, 2.6vw, 30px);
       z-index: 10;
       pointer-events: none;
-      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(255, 215, 0, 0.75));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.75));
       animation: crownShine 3.5s infinite ease-in-out;
     }
 
     @keyframes crownShine {
-      0%, 100% { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.65)); }
-      50% { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 235, 100, 0.95)); }
+      0%, 100% { filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.65)); }
+      50% { filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 18px rgba(255, 235, 100, 0.95)); }
     }
 
     .total-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(6px, 0.8vh, 8px) clamp(18px, 2.2vw, 26px);
-      border-radius: 11px;
-      background: linear-gradient(180deg, rgba(255, 215, 0, 0.3) 0%, rgba(180, 115, 0, 0.48) 100%);
+      padding: clamp(5px, 0.7vh, 7px) clamp(18px, 2.2vw, 26px);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(45, 20, 75, 0.85) 0%, rgba(20, 8, 38, 0.95) 100%);
       border: 2px solid #ffd700;
       box-shadow: 
-        0 0 16px rgba(255, 215, 0, 0.58),
-        inset 0 0 10px rgba(255, 215, 0, 0.32);
-      color: #fff4b8;
-      font-size: clamp(0.96rem, 1.2vw, 1.14rem);
+        0 0 14px rgba(255, 215, 0, 0.45),
+        inset 0 0 8px rgba(255, 215, 0, 0.2);
+      color: #ffd700;
+      font-size: clamp(0.88rem, 1.1vw, 1.05rem);
       font-weight: 900;
       letter-spacing: 0.8px;
       text-transform: uppercase;
@@ -584,120 +585,198 @@
     }
 
     /* ========================================================
-       TABLE BODY & CELLS
+       FLOATING 3D CAPSULE ROWS & CELLS
        ======================================================== */
-    .points-table tbody tr {
-      transition: transform 0.2s ease, background 0.2s ease;
+    .row-capsule {
+      position: relative;
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
 
-    .points-table tbody td {
-      padding: clamp(8px, 1.15vh, 12px) clamp(10px, 1.2vw, 18px);
-      vertical-align: middle;
+    .row-capsule td {
+      background: linear-gradient(180deg, #23124d 0%, #12062d 100%);
+      border-top: 2.4px solid #f6c034;
+      border-bottom: 2.4px solid #b87a00;
+      color: #ffffff;
+      padding: clamp(8px, 1.15vh, 12px) clamp(8px, 1.0vw, 14px);
+      text-align: center;
+      font-weight: 800;
+      position: relative;
+      box-shadow: inset 0 1.5px 2px rgba(255, 235, 140, 0.4), inset 0 -1.5px 2px rgba(0, 0, 0, 0.6);
       font-variant-numeric: tabular-nums;
     }
 
-    /* Subtle Vertical Grid Dividers */
-    .points-table tbody tr.row-standard td:not(:last-child) {
-      border-right: 1px solid var(--grid-border);
+    /* Left Capsule Cap (Team Cell) */
+    .row-capsule td:first-child {
+      border-left: 2.4px solid #f6c034;
+      border-top-left-radius: 999px;
+      border-bottom-left-radius: 999px;
+      text-align: left;
+      padding-left: clamp(14px, 1.6vw, 22px);
+      padding-right: clamp(16px, 1.8vw, 24px);
     }
 
-    /* Horizontal Row Dividers */
-    .points-table tbody tr.row-standard td {
-      border-bottom: 1px solid var(--grid-border);
+    /* Curved Pill Divider after Team */
+    .row-capsule td:first-child::after {
+      content: '';
+      position: absolute;
+      right: -1px;
+      top: -2.4px;
+      bottom: -2.4px;
+      width: 22px;
+      border-right: 2.4px solid #f6c034;
+      border-top-right-radius: 999px;
+      border-bottom-right-radius: 999px;
+      pointer-events: none;
+      z-index: 2;
     }
 
-    .points-table tbody tr.row-standard:hover td {
-      background: rgba(255, 255, 255, 0.04);
+    /* Middle Round Score Cells */
+    .row-capsule td:not(:first-child):not(:last-child) {
+      border-right: 1px solid rgba(255, 215, 0, 0.28);
+      font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* Right Capsule Cap (Total Cell) */
+    .row-capsule td:last-child {
+      border-right: 2.4px solid #f6c034;
+      border-top-right-radius: 999px;
+      border-bottom-right-radius: 999px;
+      color: #ffd700;
+      font-size: clamp(1.35rem, 1.7vw, 1.62rem);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      padding-left: clamp(14px, 1.8vw, 24px);
+      padding-right: clamp(14px, 1.8vw, 24px);
+    }
+
+    /* Curved Pill Divider before Total */
+    .row-capsule td:last-child::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -2.4px;
+      bottom: -2.4px;
+      width: 22px;
+      border-left: 2.4px solid #f6c034;
+      border-top-left-radius: 999px;
+      border-bottom-left-radius: 999px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .row-capsule:hover td {
+      filter: brightness(1.08);
     }
 
     /* Team Cell (Badges + Name) */
     .team-cell {
       display: flex;
       align-items: center;
-      gap: clamp(12px, 1.4vw, 18px);
-      padding-left: clamp(8px, 1.2vw, 16px);
+      gap: clamp(10px, 1.3vw, 16px);
     }
 
     .team-name {
-      font-size: clamp(1.08rem, 1.35vw, 1.24rem);
-      font-weight: 700;
-      color: var(--text-white);
-      white-space: nowrap;
-      letter-spacing: 0.2px;
-    }
-
-    /* Round Score Cell */
-    .col-round-score {
-      text-align: center;
-      font-size: clamp(1.08rem, 1.35vw, 1.24rem);
-      font-weight: 700;
+      font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+      font-weight: 800;
       color: #ffffff;
-    }
-
-    /* Total Score Cell */
-    .col-total-score {
-      text-align: center;
-      font-size: clamp(1.35rem, 1.7vw, 1.62rem);
-      font-weight: 900;
-      color: var(--text-gold);
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 12px rgba(255, 222, 89, 0.48);
+      white-space: nowrap;
+      letter-spacing: 0.25px;
     }
 
     /* ========================================================
-       RANK 1: GLOWING GOLD WINNER CAPSULE ROW
+       RANK 1: GLOWING 24K GOLD WINNER CAPSULE
        ======================================================== */
     .row-rank-1 {
-      filter: drop-shadow(0 0 18px rgba(255, 195, 0, 0.85));
+      filter: drop-shadow(0 0 18px rgba(255, 195, 0, 0.75));
     }
 
     .row-rank-1 td {
-      background: linear-gradient(90deg, #d38d00 0%, #ffbe1a 25%, #ffdc4a 50%, #ffbe1a 75%, #d38d00 100%);
-      border-top: 2.2px solid #fff5a0;
-      border-bottom: 2.2px solid #b87a00;
-      border-right: none !important;
+      background: linear-gradient(90deg, #d38d00 0%, #f6bc18 20%, #ffde59 50%, #f6bc18 80%, #d38d00 100%) !important;
+      border-top: 2.5px solid #fff8a8 !important;
+      border-bottom: 2.5px solid #a66a00 !important;
       color: #ffffff !important;
-      font-weight: 800;
-      padding-top: clamp(9px, 1.2vh, 13px);
-      padding-bottom: clamp(9px, 1.2vh, 13px);
-      box-shadow: 
-        inset 0 1.6px 2px rgba(255, 255, 255, 0.75),
-        inset 0 -1.6px 2px rgba(100, 60, 0, 0.45);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 2px rgba(100, 50, 0, 0.45) !important;
     }
 
     .row-rank-1 td:first-child {
-      border-left: 2.2px solid #fff5a0;
-      border-top-left-radius: 999px;
-      border-bottom-left-radius: 999px;
-      padding-left: clamp(10px, 1.4vw, 16px);
+      border-left: 2.5px solid #fff8a8 !important;
     }
 
-    .row-rank-1 td:last-child {
-      border-right: 2.2px solid #fff5a0 !important;
-      border-top-right-radius: 999px;
-      border-bottom-right-radius: 999px;
-      padding-right: clamp(10px, 1.4vw, 16px);
+    .row-rank-1 td:first-child::after {
+      border-right: 2.5px solid #fff8a8 !important;
     }
 
-    .row-rank-1 .team-name {
-      color: #ffffff;
-      font-weight: 900;
-      font-size: clamp(1.05rem, 1.3vw, 1.22rem);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-    }
-
-    .row-rank-1 .col-round-score {
-      color: #ffffff;
-      font-weight: 900;
-      font-size: clamp(1.06rem, 1.35vw, 1.24rem);
+    .row-rank-1 td:not(:first-child):not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.35) !important;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
-    .row-rank-1 .col-total-score {
-      color: #ffffff;
-      font-size: clamp(1.35rem, 1.75vw, 1.62rem);
-      font-weight: 900;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.55), 0 0 15px rgba(255, 255, 255, 0.88);
+    .row-rank-1 td:last-child {
+      border-right: 2.5px solid #fff8a8 !important;
+      color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .row-rank-1 td:last-child::before {
+      border-left: 2.5px solid #fff8a8 !important;
+    }
+
+    .row-rank-1 .team-name {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* ========================================================
+       RANK 2: ROYAL PURPLE & GOLD MEDALIST CAPSULE
+       ======================================================== */
+    .row-rank-2 {
+      filter: drop-shadow(0 0 14px rgba(246, 192, 52, 0.4));
+    }
+
+    /* ========================================================
+       RANK 3: POLISHED SILVER/PLATINUM METALLIC CAPSULE
+       ======================================================== */
+    .row-rank-3 {
+      filter: drop-shadow(0 0 14px rgba(200, 210, 230, 0.5));
+    }
+
+    .row-rank-3 td {
+      background: linear-gradient(90deg, #5b546b 0%, #9b91ad 25%, #c8c0d8 50%, #9b91ad 75%, #5b546b 100%) !important;
+      border-top: 2.5px solid #ffffff !important;
+      border-bottom: 2.5px solid #585066 !important;
+      color: #ffffff !important;
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .row-rank-3 td:first-child {
+      border-left: 2.5px solid #ffffff !important;
+    }
+
+    .row-rank-3 td:first-child::after {
+      border-right: 2.5px solid #ffffff !important;
+    }
+
+    .row-rank-3 td:not(:first-child):not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+    }
+
+    .row-rank-3 td:last-child {
+      border-right: 2.5px solid #ffffff !important;
+      color: #ffd700 !important;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.7) !important;
+    }
+
+    .row-rank-3 td:last-child::before {
+      border-left: 2.5px solid #ffffff !important;
+    }
+
+    .row-rank-3 .team-name {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
     }
 
     /* ========================================================
@@ -1424,7 +1503,16 @@
       data.forEach(item => {
         const tr = document.createElement('tr');
         tr.dataset.team = item.team;
-        tr.className = item.rank === 1 ? 'row-rank-1' : 'row-standard';
+
+        if (item.rank === 1) {
+          tr.className = 'row-capsule row-rank-1';
+        } else if (item.rank === 2) {
+          tr.className = 'row-capsule row-rank-2';
+        } else if (item.rank === 3) {
+          tr.className = 'row-capsule row-rank-3';
+        } else {
+          tr.className = 'row-capsule row-standard';
+        }
 
         const badgeHtml = getRankBadgeMarkup(item.rank);
         const r5Score = item.rounds[4];
@@ -1498,6 +1586,12 @@
           if (Math.abs(deltaY) > 2) {
             row.style.transform = `translateY(${deltaY}px)`;
             row.style.transition = 'none';
+            // Any team climbing up (deltaY > 0) floats above all other rows
+            if (deltaY > 0) {
+              row.style.zIndex = `${50 + Math.min(Math.round(deltaY), 500)}`;
+            } else {
+              row.style.zIndex = '1';
+            }
             if (isShuffle) {
               row.classList.add('row-shuffling');
             } else {
@@ -1514,6 +1608,11 @@
           row.style.transition = `transform ${duration}, background 0.4s ease`;
           row.style.transform = '';
         });
+        setTimeout(() => {
+          newRows.forEach(row => {
+            row.style.zIndex = '';
+          });
+        }, isShuffle ? 300 : 2000);
       });
     }
 
