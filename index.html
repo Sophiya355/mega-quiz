@@ -329,72 +329,113 @@
       pointer-events: auto;
     }
     .round-banner-card {
-      background: linear-gradient(135deg, rgba(28, 12, 65, 0.97) 0%, rgba(15, 5, 38, 0.98) 100%);
+      position: relative;
+      background: radial-gradient(ellipse at center, rgba(38, 16, 72, 0.98) 0%, rgba(14, 5, 30, 0.99) 100%);
       border: 3.5px solid #ffd700;
-      border-radius: 28px;
-      padding: clamp(28px, 4.5vh, 48px) clamp(36px, 5.5vw, 68px);
+      border-radius: 36px;
+      padding: clamp(38px, 5vh, 52px) clamp(36px, 5vw, 68px) clamp(28px, 4vh, 42px);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       box-shadow: 
-        0 0 65px rgba(255, 215, 0, 0.65),
+        0 0 75px rgba(255, 215, 0, 0.55),
         0 25px 65px rgba(0, 0, 0, 0.95),
-        inset 0 0 25px rgba(255, 215, 0, 0.25);
-      transform: scale(0.6) rotateX(25deg);
+        inset 0 0 0 5px #26114a,
+        inset 0 0 0 9px rgba(255, 215, 0, 0.7),
+        inset 0 0 35px rgba(255, 215, 0, 0.25);
+      transform: scale(0.65) translateY(30px);
       transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-width: 980px;
+      width: 92vw;
+      box-sizing: border-box;
     }
     .round-announcement-overlay.visible .round-banner-card {
-      transform: scale(1) rotateX(0deg);
+      transform: scale(1) translateY(0);
     }
     .round-banner-tag {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
       display: inline-flex;
       align-items: center;
-      padding: 6px 18px;
+      justify-content: center;
+      gap: 12px;
+      padding: 7px 28px;
       border-radius: 999px;
-      background: rgba(0, 210, 255, 0.25);
-      border: 1.5px solid #00d2ff;
-      color: #00ffff;
-      font-size: clamp(0.85rem, 1.1vw, 1.05rem);
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-      text-shadow: 0 0 10px rgba(0, 210, 255, 0.7);
+      background: linear-gradient(180deg, #183348 0%, #0c1825 100%);
+      border: 2px solid #38d9d9;
+      color: #64fcfc;
+      font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      box-shadow: 
+        0 0 22px rgba(0, 240, 255, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.8),
+        inset 0 0 10px rgba(0, 240, 255, 0.35);
+      text-shadow: 0 0 14px rgba(0, 240, 255, 0.9);
+      white-space: nowrap;
     }
     .round-banner-prev {
-      font-size: clamp(1.4rem, 2.2vw, 2.2rem);
-      font-weight: 800;
-      color: #ff9999;
+      font-size: clamp(2.4rem, 4.0vw, 3.8rem);
+      font-weight: 900;
+      color: #ff9cb1;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 0 15px rgba(255, 80, 80, 0.55);
+      letter-spacing: 2.5px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-shadow: 
+        0 2px 0 #ffffff,
+        0 4px 0 #aa2344,
+        0 7px 0 #690c23,
+        0 10px 20px rgba(0, 0, 0, 0.95),
+        0 0 30px rgba(255, 100, 140, 0.65);
     }
-    .round-banner-arrow {
-      font-size: clamp(1.6rem, 2.5vw, 2.5rem);
-      color: #ffd700;
-      margin: 8px 0;
-      animation: arrowBounce 1s infinite alternate ease-in-out;
+    .round-banner-arrow-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4px 0 8px 0;
+      width: clamp(220px, 28vw, 320px);
     }
-    @keyframes arrowBounce {
-      0% { transform: translateY(-4px); }
-      100% { transform: translateY(6px); }
+    .round-lightning-arrow {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.85));
+      animation: lightningPulse 1.5s infinite ease-in-out;
+    }
+    @keyframes lightningPulse {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.75)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 24px rgba(255, 235, 120, 1)); transform: scale(1.06); }
     }
     .round-banner-next {
-      font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+      font-size: clamp(3.4rem, 5.8vw, 5.6rem);
       font-weight: 900;
-      color: #ffe066;
+      color: #fff4a3;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3.5px;
+      margin: 0 0 16px 0;
       text-shadow: 
-        0 0 25px rgba(255, 215, 0, 0.85),
-        0 4px 12px rgba(0, 0, 0, 0.9);
-      margin-bottom: 12px;
+        0 2px 0 #ffffff,
+        0 5px 0 #b37400,
+        0 8px 0 #6e4400,
+        0 12px 24px rgba(0, 0, 0, 0.95),
+        0 0 45px rgba(255, 215, 0, 0.9);
+      animation: nextRoundPulse 2s infinite ease-in-out;
+    }
+    @keyframes nextRoundPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); filter: brightness(1.1); }
     }
     .round-banner-sub {
-      font-size: clamp(0.95rem, 1.2vw, 1.2rem);
-      color: #d1c4e9;
-      font-weight: 700;
-      letter-spacing: 1.5px;
+      font-size: clamp(1.2rem, 1.8vw, 1.65rem);
+      color: #ffffff;
+      font-weight: 900;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.8), 0 2px 6px rgba(0, 0, 0, 0.9);
     }
 
     /* Live Sheet Sync Pill */
@@ -2328,7 +2369,26 @@
     <div class="round-banner-card">
       <div class="round-banner-tag">⚡ ROUND TRANSITION ⚡</div>
       <div class="round-banner-prev" id="round-banner-prev">END OF ROUND 1</div>
-      <div class="round-banner-arrow">▼</div>
+      <div class="round-banner-arrow-wrap">
+        <svg class="round-lightning-arrow" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left lightning spark -->
+          <path d="M12 20 L42 17 L55 24 L74 19" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M12 20 L42 17 L55 24 L74 19" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- 3D Beveled Golden Triangle Gem pointing down -->
+          <polygon points="90,34 76,8 104,8" fill="url(#gem-gold-front)" stroke="#fff8a0" stroke-width="1.5"/>
+          <polygon points="90,34 90,8 104,8" fill="#e69d00"/>
+          <polygon points="90,34 90,8 76,8" fill="#ffd700"/>
+          <!-- Right lightning spark -->
+          <path d="M106 19 L125 24 L138 17 L168 20" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M106 19 L125 24 L138 17 L168 20" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="gem-gold-front" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fffbeb"/>
+              <stop offset="100%" stop-color="#f59e0b"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
       <div class="round-banner-next" id="round-banner-next">STARTING ROUND 2</div>
       <div class="round-banner-sub">GET READY CONTESTANTS!</div>
     </div>
