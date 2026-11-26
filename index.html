@@ -114,13 +114,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: clamp(450px, 55vw, 820px);
+      width: clamp(620px, 68vw, 1050px);
       display: flex;
       align-items: center;
       justify-content: center;
       pointer-events: none;
-      perspective: 1400px;
-      will-change: transform, top, left, width, filter;
       transition: 
         top 1.1s cubic-bezier(0.25, 1, 0.5, 1),
         left 1.1s cubic-bezier(0.25, 1, 0.5, 1),
@@ -174,6 +172,48 @@
       animation: none !important;
       transform: none !important;
       filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.55));
+    }
+
+    /* ========================================================
+       STANDBY "WELCOME TO" HERO RIBBON BANNER
+       ======================================================== */
+    .standby-welcome-tag {
+      position: fixed;
+      top: clamp(70px, 11vh, 130px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(340px, 36vw, 520px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      animation: welcomeFloat 3.8s ease-in-out infinite alternate;
+    }
+
+    .standby-welcome-tag.hidden {
+      opacity: 0 !important;
+      transform: translate(-50%, -40px) scale(0.9) !important;
+      pointer-events: none !important;
+      animation: none !important;
+    }
+
+    .welcome-ribbon-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 45px rgba(168, 85, 247, 0.45));
+    }
+
+    @keyframes welcomeFloat {
+      0% {
+        transform: translate(-50%, 0);
+      }
+      100% {
+        transform: translate(-50%, -10px);
+      }
     }
 
     /* Radial burst shockwave when table appears */
@@ -1062,6 +1102,11 @@
     <img src="headtag_cropped.png" id="hero-headtag-img" class="hero-headtag-img" alt="Mega Quiz Competition">
   </div>
 
+  <!-- Standby "Welcome To" Ribbon Banner -->
+  <div id="standby-welcome-tag" class="standby-welcome-tag">
+    <img src="welcome_ribbon.png" alt="Welcome To" class="welcome-ribbon-img">
+  </div>
+
   <div class="container">
 
     <!-- Championship Points Table Card -->
@@ -1659,6 +1704,9 @@
       console.log('[GRAND FINALE] Initiating End of Round 5 ceremony...');
       setSyncBadge('🏆 FINALE', '#ffd700');
 
+      const welcomeTag = document.getElementById('standby-welcome-tag');
+      if (welcomeTag) welcomeTag.classList.add('hidden');
+
       // Ensure table is revealed and docked if jumping straight to finale from standby
       const heroWrapper = document.getElementById('hero-headtag-wrapper');
       const tableCard = document.querySelector('.points-card');
@@ -1808,6 +1856,9 @@
       if (animTimer3) clearTimeout(animTimer3);
       resetFinaleUI();
 
+      const welcomeTag = document.getElementById('standby-welcome-tag');
+      if (welcomeTag) welcomeTag.classList.remove('hidden');
+
       const heroWrapper = document.getElementById('hero-headtag-wrapper');
       const heroImg = document.getElementById('hero-headtag-img');
       const tableCard = document.querySelector('.points-card');
@@ -1834,7 +1885,7 @@
       heroWrapper.style.top = '50%';
       heroWrapper.style.left = '50%';
       heroWrapper.style.transform = 'translate(-50%, -50%)';
-      heroWrapper.style.width = 'clamp(450px, 55vw, 820px)';
+      heroWrapper.style.width = 'clamp(620px, 68vw, 1050px)';
       heroWrapper.style.opacity = '1';
       heroWrapper.style.filter = '';
       void heroWrapper.offsetHeight;
@@ -1855,6 +1906,9 @@
       if (animTimer3) clearTimeout(animTimer3);
       resetFinaleUI();
 
+      const welcomeTag = document.getElementById('standby-welcome-tag');
+      if (welcomeTag) welcomeTag.classList.add('hidden');
+
       const heroWrapper = document.getElementById('hero-headtag-wrapper');
       const heroImg = document.getElementById('hero-headtag-img');
       const tableCard = document.querySelector('.points-card');
@@ -1880,7 +1934,7 @@
       heroWrapper.style.top = '50%';
       heroWrapper.style.left = '50%';
       heroWrapper.style.transform = 'translate(-50%, -50%)';
-      heroWrapper.style.width = 'clamp(450px, 55vw, 820px)';
+      heroWrapper.style.width = 'clamp(620px, 68vw, 1050px)';
       heroWrapper.style.opacity = '1';
       heroWrapper.style.filter = '';
       void heroWrapper.offsetHeight;
