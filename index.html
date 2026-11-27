@@ -71,7 +71,7 @@
         inset 0 0 20px rgba(246, 192, 52, 0.24);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: clamp(16px, 2.2vh, 26px) clamp(10px, 1.4vw, 20px) clamp(4px, 0.6vh, 10px);
+      padding: calc(clamp(16px, 2.2vh, 26px) + 0.35cm) clamp(10px, 1.4vw, 20px) clamp(4px, 0.6vh, 10px);
       box-sizing: border-box;
 
       /* Initially hidden - emerges 'from nowhere' */
@@ -96,7 +96,7 @@
     /* Slot where the headtag will dock atop the table */
     .table-headtag-slot {
       position: absolute;
-      top: calc(-118px - 0.25cm);
+      top: calc(-118px - 0.55cm);
       left: 50%;
       transform: translateX(-50%);
       width: clamp(350px, 40vw, 520px);
@@ -158,7 +158,7 @@
     /* Docked state atop points table */
     .hero-headtag-wrapper.docked {
       position: absolute !important;
-      top: -105px !important;
+      top: calc(-105px - 0.3cm) !important;
       left: 50% !important;
       transform: translateX(-50%) !important;
       width: clamp(300px, 32vw, 460px) !important;
@@ -249,10 +249,10 @@
       }
     }
 
-    /* Top Right Utility Controls */
+    /* Bottom Right Utility Controls */
     .top-actions-wrap {
       position: fixed;
-      top: 18px;
+      bottom: 18px;
       right: 18px;
       z-index: 999;
       display: flex;
@@ -385,37 +385,29 @@
     .round-announcement-overlay.visible .round-banner-card {
       transform: scale(1) translateY(0);
     }
-    .round-banner-tag {
+    .round-card-crown {
       position: absolute;
-      top: -24px;
+      top: clamp(-46px, -5.5vw, -36px);
       left: 50%;
       transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 7px 28px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #183348 0%, #0c1825 100%);
-      border: 2px solid #38d9d9;
-      color: #64fcfc;
-      font-size: clamp(0.95rem, 1.25vw, 1.15rem);
-      font-weight: 900;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      box-shadow: 
-        0 0 22px rgba(0, 240, 255, 0.6),
-        0 4px 12px rgba(0, 0, 0, 0.8),
-        inset 0 0 10px rgba(0, 240, 255, 0.35);
-      text-shadow: 0 0 14px rgba(0, 240, 255, 0.9);
-      white-space: nowrap;
+      width: clamp(78px, 8.8vw, 108px);
+      height: clamp(52px, 5.9vw, 72px);
+      z-index: 10;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 28px rgba(255, 215, 0, 0.95));
+      animation: crownShine 3.5s infinite ease-in-out;
+    }
+    .round-card-crown svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .round-banner-prev {
-      font-size: clamp(2.4rem, 4.0vw, 3.8rem);
+      font-size: clamp(1.8rem, 3.2vw, 3.0rem);
       font-weight: 900;
       color: #ff9cb1;
       text-transform: uppercase;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       margin-top: 10px;
       margin-bottom: 4px;
       text-shadow: 
@@ -443,11 +435,11 @@
       50% { filter: drop-shadow(0 0 24px rgba(255, 235, 120, 1)); transform: scale(1.06); }
     }
     .round-banner-next {
-      font-size: clamp(3.4rem, 5.8vw, 5.6rem);
+      font-size: clamp(2.5rem, 4.4vw, 4.4rem);
       font-weight: 900;
       color: #fff4a3;
       text-transform: uppercase;
-      letter-spacing: 3.5px;
+      letter-spacing: 3px;
       margin: 0 0 16px 0;
       text-shadow: 
         0 2px 0 #ffffff,
@@ -470,10 +462,10 @@
       text-shadow: 0 0 14px rgba(255, 255, 255, 0.8), 0 2px 6px rgba(0, 0, 0, 0.9);
     }
 
-    /* Live Sheet Sync Pill */
+    /* Live Sheet Sync Pill (Bottom-Left) */
     .live-sync-pill {
       position: fixed;
-      top: 18px;
+      bottom: 18px;
       left: 18px;
       background: rgba(18, 9, 44, 0.88);
       border: 1.5px solid rgba(0, 210, 255, 0.55);
@@ -713,11 +705,11 @@
       border-right: 2.4px solid #f6c034;
       border-top-right-radius: 999px;
       border-bottom-right-radius: 999px;
-      color: #ffd700;
+      color: #ffffff;
       font-size: clamp(1.15rem, 1.45vw, 1.55rem);
       font-weight: 900;
       letter-spacing: 0.5px;
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 255, 255, 0.5);
       padding-left: clamp(8px, 1.0vw, 16px);
       padding-right: clamp(8px, 1.0vw, 16px);
     }
@@ -800,53 +792,128 @@
     }
 
     /* ========================================================
-       RANK 2: ROYAL PURPLE & GOLD MEDALIST CAPSULE
+       RANK 2: POLISHED SILVER / PLATINUM METALLIC CAPSULE
        ======================================================== */
     .row-rank-2 {
-      filter: drop-shadow(0 0 14px rgba(246, 192, 52, 0.4));
+      filter: drop-shadow(0 0 16px rgba(210, 225, 245, 0.65));
     }
 
-    /* ========================================================
-       RANK 3: POLISHED SILVER/PLATINUM METALLIC CAPSULE
-       ======================================================== */
-    .row-rank-3 {
-      filter: drop-shadow(0 0 14px rgba(200, 210, 230, 0.5));
-    }
-
-    .row-rank-3 td {
-      background: linear-gradient(90deg, #5b546b 0%, #9b91ad 25%, #c8c0d8 50%, #9b91ad 75%, #5b546b 100%) !important;
+    .row-rank-2 td {
+      background: linear-gradient(90deg, #505864 0%, #8c96a4 25%, #dce4ee 50%, #8c96a4 75%, #505864 100%) !important;
       border-top: 2.5px solid #ffffff !important;
-      border-bottom: 2.5px solid #585066 !important;
+      border-bottom: 2.5px solid #454d58 !important;
       color: #ffffff !important;
-      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 2px rgba(0, 0, 0, 0.5) !important;
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.85), inset 0 -2px 2px rgba(0, 0, 0, 0.5) !important;
     }
 
-    .row-rank-3 td:first-child {
+    .row-rank-2 td:first-child {
       border-left: 2.5px solid #ffffff !important;
     }
 
-    .row-rank-3 td:first-child::after {
+    .row-rank-2 td:first-child::after {
       border-right: 2.5px solid #ffffff !important;
     }
 
+    .row-rank-2 td:not(:first-child):not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.45) !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+    }
+
+    .row-rank-2 td:last-child {
+      border-right: 2.5px solid #ffffff !important;
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 12px rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .row-rank-2 td:last-child::before {
+      border-left: 2.5px solid #ffffff !important;
+    }
+
+    .row-rank-2 .team-name {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /* ========================================================
+       RANK 3: RADIANT BRONZE METALLIC CAPSULE
+       ======================================================== */
+    .row-rank-3 {
+      filter: drop-shadow(0 0 16px rgba(220, 110, 50, 0.65));
+    }
+
+    .row-rank-3 td {
+      background: linear-gradient(90deg, #693012 0%, #aa5a2b 25%, #e8955a 50%, #aa5a2b 75%, #693012 100%) !important;
+      border-top: 2.5px solid #ffd0b0 !important;
+      border-bottom: 2.5px solid #4a1e08 !important;
+      color: #ffffff !important;
+      box-shadow: inset 0 2px 2px rgba(255, 240, 220, 0.8), inset 0 -2px 2px rgba(50, 15, 0, 0.5) !important;
+    }
+
+    .row-rank-3 td:first-child {
+      border-left: 2.5px solid #ffd0b0 !important;
+    }
+
+    .row-rank-3 td:first-child::after {
+      border-right: 2.5px solid #ffd0b0 !important;
+    }
+
     .row-rank-3 td:not(:first-child):not(:last-child) {
-      border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
+      border-right: 1px solid rgba(255, 220, 190, 0.35) !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
     }
 
     .row-rank-3 td:last-child {
-      border-right: 2.5px solid #ffffff !important;
-      color: #ffd700 !important;
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.7) !important;
+      border-right: 2.5px solid #ffd0b0 !important;
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 12px rgba(255, 255, 255, 0.7) !important;
     }
 
     .row-rank-3 td:last-child::before {
-      border-left: 2.5px solid #ffffff !important;
+      border-left: 2.5px solid #ffd0b0 !important;
     }
 
     .row-rank-3 .team-name {
       color: #ffffff !important;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /* ========================================================
+       ROUND SCORE COLUMN HIGHLIGHTING
+       When in Round X: Column X points are ultra-bright white with glow.
+       All other round column points are dull white.
+       ======================================================== */
+    .col-round-score {
+      transition: color 0.35s ease, opacity 0.35s ease, text-shadow 0.35s ease, font-size 0.25s ease, box-shadow 0.35s ease;
+    }
+
+    /* Inactive round columns when any round is active (dull white) */
+    .points-table[data-active-round="1"] tbody tr td.col-round-score,
+    .points-table[data-active-round="2"] tbody tr td.col-round-score,
+    .points-table[data-active-round="3"] tbody tr td.col-round-score,
+    .points-table[data-active-round="4"] tbody tr td.col-round-score,
+    .points-table[data-active-round="5"] tbody tr td.col-round-score {
+      color: rgba(255, 255, 255, 0.32) !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+      font-weight: 600 !important;
+      font-size: clamp(0.88rem, 1.05vw, 1.08rem) !important;
+    }
+
+    /* Active round column (bright vivid white with vibrant cyan-white glow) */
+    .points-table[data-active-round="1"] tbody tr td.col-r1,
+    .points-table[data-active-round="2"] tbody tr td.col-r2,
+    .points-table[data-active-round="3"] tbody tr td.col-r3,
+    .points-table[data-active-round="4"] tbody tr td.col-r4,
+    .points-table[data-active-round="5"] tbody tr td.col-r5 {
+      color: #ffffff !important;
+      font-weight: 900 !important;
+      font-size: clamp(1.06rem, 1.34vw, 1.38rem) !important;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 1), 0 0 22px rgba(0, 225, 255, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+      box-shadow: inset 0 0 14px rgba(0, 220, 255, 0.28) !important;
+    }
+
+    /* Soft dim for inactive header round pills when a round is active */
+    .points-table[data-active-round] .round-pill:not(.active-round) {
+      opacity: 0.65;
     }
 
     /* ========================================================
@@ -962,7 +1029,7 @@
     }
 
     /* ========================================================
-       OLYMPIC / ESPORTS CHAMPIONSHIP PODIUM
+       OLYMPIC / ESPORTS CHAMPIONSHIP PODIUM STAGE
        ======================================================== */
     .podium-stage {
       position: fixed;
@@ -973,14 +1040,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding-top: clamp(20px, 4vh, 50px);
+      justify-content: flex-end;
+      padding: clamp(12px, 2.5vh, 32px) clamp(10px, 2vw, 24px) clamp(35px, 6vh, 65px);
       box-sizing: border-box;
       z-index: 50;
       pointer-events: none;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.8s ease, visibility 0.8s ease;
+      background: radial-gradient(circle at 50% 45%, rgba(25, 15, 65, 0.35), rgba(8, 5, 22, 0.82));
     }
 
     .podium-stage.active {
@@ -989,247 +1057,369 @@
       pointer-events: auto;
     }
 
-    /* Podium Title Header */
-    .podium-header {
-      text-align: center;
-      margin-bottom: clamp(16px, 3vh, 36px);
-      transform: translateY(-30px);
+    /* ========================================================
+       FINALE CONGRATULATIONS BADGE
+       ======================================================== */
+    .finale-badge-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
       opacity: 0;
-      transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s, opacity 1s ease 0.3s;
+      z-index: 90;
+      pointer-events: none;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.9))
+              drop-shadow(0 0 45px rgba(255, 200, 0, 0.55));
     }
 
-    .podium-stage.active .podium-header {
-      transform: translateY(0);
-      opacity: 1;
+    .finale-badge-container img {
+      width: clamp(380px, 46vw, 620px);
+      height: auto;
+      display: block;
+      transform-style: preserve-3d;
     }
 
-    .podium-header-badge {
-      display: inline-block;
-      font-size: clamp(0.85rem, 1.1vw, 1.05rem);
-      font-weight: 900;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      padding: 6px 24px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), rgba(255, 255, 255, 0.15), rgba(255, 215, 0, 0.2));
-      border: 1.5px solid rgba(255, 215, 0, 0.6);
-      color: #ffd700;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-      margin-bottom: 8px;
+    /* Step 1: Pop & Zoom into screen center */
+    .finale-badge-container.at-center {
+      animation: badgePopCenter 0.75s cubic-bezier(0.18, 0.89, 0.32, 1.25) forwards;
     }
 
-    .podium-header-title {
-      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-      font-weight: 900;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 4px 15px rgba(0, 0, 0, 0.9);
+    @keyframes badgePopCenter {
+      0% {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0;
+      }
+      70% {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 1;
+      }
+      100% {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.02);
+        opacity: 1;
+      }
     }
 
-    /* Podium Row of 3 Columns */
-    .podium-columns-container {
+    /* Step 2: 3D Spin (matching intro badge) & glide to the top */
+    .finale-badge-container.spin-top {
+      animation: badgeSpinToTop 1.3s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+    }
+
+    @keyframes badgeSpinToTop {
+      0% {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.02) rotateY(0deg);
+        filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.75)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
+        opacity: 1;
+      }
+      50% {
+        top: 30%;
+        transform: translate(-50%, -40%) scale(1.18) rotateY(360deg);
+        filter: drop-shadow(0 0 70px rgba(255, 235, 100, 1)) drop-shadow(0 20px 45px rgba(0, 0, 0, 0.95)) brightness(1.25);
+        opacity: 1;
+      }
+      100% {
+        top: clamp(10px, 2vh, 26px);
+        transform: translate(-50%, 0) scale(0.68) rotateY(720deg);
+        filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.75)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
+        opacity: 1;
+      }
+    }
+
+    /* ================= STAGE & PEDESTALS ================= */
+    .podium-stage .stage {
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      gap: clamp(16px, 2.4vw, 36px);
-      width: 92%;
-      max-width: 1100px;
+      gap: clamp(1rem, 2vw, 1.8rem);
+      width: 100%;
+      max-width: 1060px;
+      margin-bottom: 1.75cm;
+      z-index: 10;
     }
 
-    .podium-col {
-      flex: 1;
-      max-width: 320px;
+    .pedestal-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
+      flex: 1;
+      max-width: 310px;
       transform: translateY(120%);
       opacity: 0;
       transition: transform 1.1s cubic-bezier(0.18, 0.89, 0.32, 1.25), opacity 0.8s ease;
     }
 
-    /* Staggered entrance for columns */
-    .podium-stage.active .podium-col-2 {
+    .pedestal-unit:hover {
+      transform: translateY(-8px) !important;
+    }
+
+    .podium-stage.active .pedestal-unit.silver {
       transform: translateY(0);
       opacity: 1;
       transition-delay: 0.15s;
     }
 
-    .podium-stage.active .podium-col-1 {
+    .podium-stage.active .pedestal-unit.gold {
       transform: translateY(0);
       opacity: 1;
       transition-delay: 0.4s;
     }
 
-    .podium-stage.active .podium-col-3 {
+    .podium-stage.active .pedestal-unit.bronze {
       transform: translateY(0);
       opacity: 1;
       transition-delay: 0.25s;
     }
 
-    /* Trophy Wrapper */
-    .podium-trophy-box {
-      width: clamp(130px, 15vw, 190px);
-      height: clamp(115px, 13vw, 160px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-bottom: -10px;
-      z-index: 2;
+    /* Trophy Container */
+    .trophy-slot {
+      width: clamp(120px, 13.5vw, 155px);
+      height: clamp(105px, 12vw, 135px);
+      margin-bottom: -2px;
+      z-index: 4;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.8));
     }
-
-    .podium-trophy-svg {
+    .trophy-slot svg {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.7));
+      display: block;
+      overflow: visible;
+    }
+    .gold .trophy-slot {
+      width: clamp(150px, 16.5vw, 190px);
+      height: clamp(125px, 14vw, 160px);
     }
 
-    /* Pedestal Base Blocks */
-    .podium-box {
-      width: 100%;
-      border-radius: clamp(18px, 2.2vw, 26px);
-      padding: clamp(18px, 2.5vh, 28px) clamp(14px, 1.8vw, 22px);
-      box-sizing: border-box;
+    /* Top Cornice */
+    .cornice-top {
+      width: 104%;
+      height: 16px;
+      border-radius: 4px 4px 0 0;
+      background: var(--metal-light);
+      border-top: 2px solid var(--rim-bright);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      z-index: 3;
+    }
+
+    .cornice-sub {
+      width: 98%;
+      height: 10px;
+      background: var(--metal-dark);
+      box-shadow: 0 0 15px var(--glow);
+      border-bottom: 2px solid var(--rim-bright);
+      z-index: 3;
+    }
+
+    /* Main Pedestal Body */
+    .pedestal-body {
+      position: relative;
+      width: 92%;
+      padding: clamp(1.8rem, 3vh, 2.3rem) 1.2rem clamp(1.4rem, 2.2vh, 1.8rem);
+      background: var(--body-grad);
+      border-left: 3px solid var(--rim-mid);
+      border-right: 3px solid var(--rim-mid);
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7), 0 15px 35px rgba(0, 0, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Glowing Vertical Side Strips */
+    .pedestal-body::before,
+    .pedestal-body::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      bottom: 14px;
+      width: 5px;
+      border-radius: 4px;
+      background: var(--rim-bright);
+      box-shadow: 0 0 12px var(--glow), 0 0 22px var(--glow);
+    }
+    .pedestal-body::before { left: 10px; }
+    .pedestal-body::after { right: 10px; }
+
+    /* Octagonal Inner Panel */
+    .inner-panel {
+      width: 84%;
+      padding: clamp(1.4rem, 2.2vh, 1.8rem) 0.8rem clamp(1rem, 1.8vh, 1.4rem);
+      background: var(--panel-bg);
+      clip-path: polygon(12% 0%, 88% 0%, 100% 14%, 100% 86%, 88% 100%, 12% 100%, 0% 86%, 0% 14%);
+      border: 1px solid var(--rim-mid);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      position: relative;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.85);
     }
 
-    /* 1ST PLACE - GOLD (CENTER) */
-    .podium-col-1 .podium-box {
-      min-height: clamp(280px, 34vh, 350px);
-      background: linear-gradient(180deg, rgba(38, 28, 8, 0.94) 0%, rgba(14, 12, 6, 0.98) 100%);
-      border: 3px solid #ffcc00;
-      box-shadow: 
-        0 0 45px rgba(255, 204, 0, 0.45),
-        0 25px 60px rgba(0, 0, 0, 0.9),
-        inset 0 0 25px rgba(255, 204, 0, 0.25);
-    }
- 
-    .podium-col-1 .podium-rank-num {
-      font-size: clamp(2.8rem, 4.4vw, 4rem);
+    /* Shield Rank Crest */
+    .rank-shield {
+      position: absolute;
+      top: -14px;
+      width: 56px;
+      height: 62px;
+      background: var(--shield-grad);
+      clip-path: polygon(0 0, 100% 0, 100% 72%, 50% 100%, 0 72%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
       font-weight: 900;
-      line-height: 1;
-      color: #ffd700;
-      text-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 3px 8px rgba(0, 0, 0, 0.9);
-      margin-bottom: 8px;
+      color: var(--shield-text);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      z-index: 5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     }
 
-    .podium-col-1 .podium-team-name {
-      font-size: clamp(1.25rem, 1.7vw, 1.65rem);
+    .team-label {
+      font-size: clamp(1.15rem, 1.55vw, 1.45rem);
       font-weight: 800;
+      margin: 0.4rem 0 0.8rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
       color: #ffffff;
-      margin-bottom: 14px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .podium-col-1 .podium-score-pill {
-      border: 2px solid #ffd700;
-      background: rgba(255, 215, 0, 0.14);
-      color: #ffe066;
+    .pts-badge {
+      padding: clamp(0.35rem, 0.7vh, 0.45rem) clamp(1rem, 1.6vw, 1.5rem);
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: clamp(0.85rem, 1.1vw, 1rem);
+      background: rgba(0, 0, 0, 0.55);
+      border: 2px solid var(--rim-bright);
+      color: var(--pts-color);
+      box-shadow: 0 0 16px var(--glow), inset 0 0 10px var(--glow);
+    }
+
+    /* Podium Contestant Names List */
+    .podium-members-list {
+      margin-top: clamp(8px, 1.2vh, 12px);
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(3px, 0.45vh, 6px);
+      align-items: center;
+      z-index: 2;
+    }
+    .podium-member-item {
+      width: 100%;
+      box-sizing: border-box;
+      padding: clamp(3px, 0.45vh, 5px) clamp(8px, 1vw, 12px);
       border-radius: 999px;
-      padding: clamp(6px, 1vh, 9px) clamp(20px, 2.2vw, 32px);
-      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
-    }
-
-    /* 2ND PLACE - SILVER (LEFT) */
-    .podium-col-2 .podium-box {
-      min-height: clamp(235px, 29vh, 295px);
-      background: linear-gradient(180deg, rgba(14, 26, 46, 0.94) 0%, rgba(8, 14, 26, 0.98) 100%);
-      border: 2.8px solid #7bc5fe;
-      box-shadow: 
-        0 0 38px rgba(123, 197, 254, 0.38),
-        0 20px 50px rgba(0, 0, 0, 0.85),
-        inset 0 0 20px rgba(123, 197, 254, 0.2);
-    }
-
-    .podium-col-2 .podium-rank-num {
-      font-size: clamp(2.4rem, 3.8vw, 3.4rem);
-      font-weight: 900;
-      line-height: 1;
-      color: #90caf9;
-      text-shadow: 0 0 22px rgba(123, 197, 254, 0.7), 0 3px 8px rgba(0, 0, 0, 0.9);
-      margin-bottom: 8px;
-    }
-
-    .podium-col-2 .podium-team-name {
-      font-size: clamp(1.15rem, 1.5vw, 1.45rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-      max-width: 100%;
+      font-size: clamp(0.72rem, 0.88vw, 0.86rem);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
+    }
+    .gold .podium-member-item {
+      background: rgba(36, 20, 0, 0.75);
+      border: 1.5px solid rgba(255, 215, 0, 0.5);
+      color: #fff8d6;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    .silver .podium-member-item {
+      background: rgba(14, 25, 38, 0.75);
+      border: 1.5px solid rgba(140, 205, 255, 0.5);
+      color: #e8f5ff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    .bronze .podium-member-item {
+      background: rgba(35, 14, 4, 0.75);
+      border: 1.5px solid rgba(255, 165, 115, 0.5);
+      color: #ffe6d9;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+    .podium-member-item svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.9;
     }
 
-    .podium-col-2 .podium-score-pill {
-      border: 2px solid #64b5f6;
-      background: rgba(100, 181, 246, 0.14);
-      color: #bbdefb;
-      border-radius: 999px;
-      padding: clamp(5px, 0.8vh, 8px) clamp(18px, 2vw, 28px);
-      font-size: clamp(0.95rem, 1.25vw, 1.2rem);
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 16px rgba(100, 181, 246, 0.3);
+    /* Stepped Base Plinths */
+    .plinth-1 {
+      width: 98%;
+      height: 12px;
+      background: var(--metal-light);
+      border-top: 2px solid var(--rim-bright);
+      box-shadow: 0 -2px 14px var(--glow);
+    }
+    .plinth-2 {
+      width: 105%;
+      height: 14px;
+      background: var(--metal-dark);
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.85);
     }
 
-    /* 3RD PLACE - BRONZE (RIGHT) */
-    .podium-col-3 .podium-box {
-      min-height: clamp(195px, 24vh, 245px);
-      background: linear-gradient(180deg, rgba(38, 20, 12, 0.94) 0%, rgba(18, 10, 6, 0.98) 100%);
-      border: 2.8px solid #ff9d5c;
-      box-shadow: 
-        0 0 35px rgba(255, 157, 92, 0.35),
-        0 20px 50px rgba(0, 0, 0, 0.85),
-        inset 0 0 20px rgba(255, 157, 92, 0.2);
+    /* ================= THEME VARIABLES ================= */
+    /* GOLD (1st) */
+    .gold {
+      --metal-light: linear-gradient(90deg, #8c5800, #ffd54f, #fff3b0, #ffd54f, #8c5800);
+      --metal-dark: linear-gradient(90deg, #4f2f00, #b87a00, #4f2f00);
+      --body-grad: linear-gradient(180deg, #c98a14 0%, #7d4e00 50%, #472a00 100%);
+      --panel-bg: linear-gradient(180deg, #4d3000 0%, #241500 100%);
+      --shield-grad: linear-gradient(180deg, #fff2a6 0%, #d48806 100%);
+      --shield-text: #3d2200;
+      --rim-bright: #fff099;
+      --rim-mid: #ffb700;
+      --glow: rgba(255, 204, 0, 0.7);
+      --pts-color: #ffe885;
     }
+    .gold .pedestal-body { min-height: clamp(285px, 37vh, 350px); }
 
-    .podium-col-3 .podium-rank-num {
-      font-size: clamp(2.2rem, 3.5vw, 3.1rem);
-      font-weight: 900;
-      line-height: 1;
-      color: #ffb74d;
-      text-shadow: 0 0 20px rgba(255, 157, 92, 0.7), 0 3px 8px rgba(0, 0, 0, 0.9);
-      margin-bottom: 8px;
+    /* SILVER / BLUE (2nd) */
+    .silver {
+      --metal-light: linear-gradient(90deg, #2d4c6b, #9ed8ff, #ffffff, #9ed8ff, #2d4c6b);
+      --metal-dark: linear-gradient(90deg, #16283b, #4a78a6, #16283b);
+      --body-grad: linear-gradient(180deg, #4b6c8c 0%, #24384d 55%, #121d29 100%);
+      --panel-bg: linear-gradient(180deg, #162638 0%, #0b131c 100%);
+      --shield-grad: linear-gradient(180deg, #e6f7ff 0%, #4fa3e3 100%);
+      --shield-text: #0b253d;
+      --rim-bright: #80d4ff;
+      --rim-mid: #38a3eb;
+      --glow: rgba(77, 195, 255, 0.7);
+      --pts-color: #cceeff;
     }
+    .silver .pedestal-body { min-height: clamp(245px, 32vh, 305px); }
 
-    .podium-col-3 .podium-team-name {
-      font-size: clamp(1.1rem, 1.4vw, 1.4rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    /* BRONZE (3rd) */
+    .bronze {
+      --metal-light: linear-gradient(90deg, #59260b, #e88d56, #ffd4b8, #e88d56, #59260b);
+      --metal-dark: linear-gradient(90deg, #331304, #8f4119, #331304);
+      --body-grad: linear-gradient(180deg, #9e4c20 0%, #5c280d 55%, #301305 100%);
+      --panel-bg: linear-gradient(180deg, #3b1907 0%, #1c0a02 100%);
+      --shield-grad: linear-gradient(180deg, #ffd4b8 0%, #b8531d 100%);
+      --shield-text: #2e1002;
+      --rim-bright: #ffaa75;
+      --rim-mid: #e06d2b;
+      --glow: rgba(255, 136, 64, 0.65);
+      --pts-color: #ffd7bd;
     }
+    .bronze .pedestal-body { min-height: clamp(215px, 28vh, 270px); }
 
-    .podium-col-3 .podium-score-pill {
-      border: 2px solid #ff9d5c;
-      background: rgba(255, 157, 92, 0.14);
-      color: #ffe0b2;
-      border-radius: 999px;
-      padding: clamp(5px, 0.8vh, 8px) clamp(18px, 2vw, 28px);
-      font-size: clamp(0.95rem, 1.25vw, 1.2rem);
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 16px rgba(255, 157, 92, 0.3);
+    @media (max-width: 768px) {
+      .podium-stage .stage { flex-direction: column; align-items: center; gap: 2.5rem; }
+      .gold { order: 1; }
+      .silver { order: 2; }
+      .bronze { order: 3; }
     }
 
     /* Confetti Canvas */
@@ -1240,11 +1430,14 @@
       width: 100vw;
       height: 100vh;
       pointer-events: none;
-      z-index: 100;
+      z-index: 120;
     }
   </style>
 </head>
 <body>
+
+  <!-- Confetti Popper Canvas -->
+  <canvas id="confetti-canvas"></canvas>
 
   <!-- Floating Hero Headtag (Starts in center, spins, then docks onto table) -->
   <div id="hero-headtag-wrapper" class="hero-headtag-wrapper">
@@ -1600,11 +1793,11 @@
           </td>
 
           <!-- ROUND 1 to ROUND 5 Columns -->
-          <td class="col-round-score">${item.rounds[0]}</td>
-          <td class="col-round-score">${item.rounds[1]}</td>
-          <td class="col-round-score">${item.rounds[2]}</td>
-          <td class="col-round-score">${item.rounds[3]}</td>
-          <td class="col-round-score">${r5Display}</td>
+          <td class="col-round-score col-r1">${item.rounds[0]}</td>
+          <td class="col-round-score col-r2">${item.rounds[1]}</td>
+          <td class="col-round-score col-r3">${item.rounds[2]}</td>
+          <td class="col-round-score col-r4">${item.rounds[3]}</td>
+          <td class="col-round-score col-r5">${r5Display}</td>
 
           <!-- TOTAL Column -->
           <td class="col-total-score">${item.total}</td>
@@ -1673,7 +1866,7 @@
 
       // 4. Play smooth transition
       requestAnimationFrame(() => {
-        const duration = isShuffle ? '0.2s cubic-bezier(0.2, 0.8, 0.2, 1)' : (customDuration || '1.8s cubic-bezier(0.25, 1, 0.5, 1)');
+        const duration = customDuration || (isShuffle ? '0.92s cubic-bezier(0.25, 1, 0.5, 1)' : '1.8s cubic-bezier(0.25, 1, 0.5, 1)');
         newRows.forEach(row => {
           row.style.transition = `transform ${duration}, background 0.4s ease`;
           row.style.transform = '';
@@ -1682,36 +1875,87 @@
           newRows.forEach(row => {
             row.style.zIndex = '';
           });
-        }, isShuffle ? 300 : 2000);
+        }, isShuffle ? 950 : 2000);
       });
     }
 
-    // Round Announcement Banner Overlay
-    function triggerRoundAnnouncement(prevRound, nextRound) {
+    // Official Round Names from Document
+    const ROUND_NAMES = {
+      1: 'BRAIN BURST',
+      2: 'BEAT THE CLOCK',
+      3: 'SHOW AND GUESS',
+      4: 'LOGO HUNT',
+      5: 'TEAM ACTIVITY'
+    };
+
+    // Show round transition overlay (hangs on screen until next round starts)
+    function showRoundTransition(endedRound, startingRound) {
       const overlay = document.getElementById('round-announcement-overlay');
       const prevEl = document.getElementById('round-banner-prev');
       const nextEl = document.getElementById('round-banner-next');
+      if (!overlay || !prevEl || !nextEl) return;
 
-      if (prevRound) {
-        prevEl.textContent = `END OF ROUND ${prevRound}`;
+      const prevName = ROUND_NAMES[endedRound] || (endedRound ? `ROUND ${endedRound}` : '');
+      const nextName = ROUND_NAMES[startingRound] || (startingRound ? `ROUND ${startingRound}` : '');
+
+      if (endedRound && prevName) {
+        prevEl.textContent = `END OF ${prevName}`;
       } else {
-        prevEl.textContent = 'CHAMPIONSHIP ROUND';
+        prevEl.textContent = 'MEGA QUIZ COMPETITION';
       }
-      nextEl.textContent = `STARTING ROUND ${nextRound}`;
+      nextEl.textContent = `STARTING ${nextName}`;
 
       overlay.classList.add('visible');
+    }
+
+    let roundAnnouncementTimer = null;
+
+    // Dismiss round transition overlay
+    function hideRoundTransition() {
+      if (roundAnnouncementTimer) {
+        clearTimeout(roundAnnouncementTimer);
+        roundAnnouncementTimer = null;
+      }
+      const overlay = document.getElementById('round-announcement-overlay');
+      if (overlay) overlay.classList.remove('visible');
+    }
+
+    // Start a specific round: hides transition overlay, activates round pill and updates mode
+    function startRound(roundNum) {
+      hideRoundTransition();
+      highlightActiveRound(roundNum);
+      currentRoundNum = roundNum;
+      if (roundNum === 5) {
+        isRound5Active = true;
+      } else {
+        isRound5Active = false;
+      }
+    }
+
+    function triggerRoundAnnouncement(prevRound, nextRound) {
+      if (roundAnnouncementTimer) clearTimeout(roundAnnouncementTimer);
+      showRoundTransition(prevRound, nextRound);
       highlightActiveRound(nextRound);
       currentRoundNum = nextRound;
+      isRound5Active = (nextRound === 5);
 
-      setTimeout(() => {
-        overlay.classList.remove('visible');
+      roundAnnouncementTimer = setTimeout(() => {
+        hideRoundTransition();
       }, 3800);
     }
 
-    // Highlight active round in table header
+    // Highlight active round in table header and table body (0 or null clears all)
     function highlightActiveRound(roundNum) {
+      const table = document.querySelector('.points-table');
+      if (table) {
+        if (roundNum && roundNum >= 1 && roundNum <= 5) {
+          table.dataset.activeRound = String(roundNum);
+        } else {
+          delete table.dataset.activeRound;
+        }
+      }
       document.querySelectorAll('.round-pill').forEach((pill, idx) => {
-        if (idx + 1 === roundNum) {
+        if (roundNum && idx + 1 === roundNum) {
           pill.classList.add('active-round');
         } else {
           pill.classList.remove('active-round');
@@ -1722,13 +1966,26 @@
     // ========================================================
     // CONFETTI POPPER CANNON SYSTEM (HIGH PERFORMANCE CANVAS)
     // ========================================================
-    const confettiCanvas = document.getElementById('confetti-canvas');
-    const confettiCtx = confettiCanvas ? confettiCanvas.getContext('2d') : null;
+    let confettiCanvas = null;
+    let confettiCtx = null;
     let confettiParticles = [];
     let confettiAnimId = null;
     let isConfettiActive = false;
 
+    function getConfettiContext() {
+      if (!confettiCanvas) {
+        confettiCanvas = document.getElementById('confetti-canvas');
+      }
+      if (confettiCanvas && !confettiCtx) {
+        confettiCtx = confettiCanvas.getContext('2d');
+      }
+      return confettiCtx;
+    }
+
     function resizeConfettiCanvas() {
+      if (!confettiCanvas) {
+        confettiCanvas = document.getElementById('confetti-canvas');
+      }
       if (!confettiCanvas) return;
       confettiCanvas.width = window.innerWidth;
       confettiCanvas.height = window.innerHeight;
@@ -1750,31 +2007,32 @@
         y: y,
         vx: Math.cos(angleRad) * speed,
         vy: Math.sin(angleRad) * speed,
-        size: 9 + Math.random() * 8,
-        length: 14 + Math.random() * 12,
+        size: 5 + Math.random() * 3,
+        length: 8 + Math.random() * 5,
         color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
         rotation: Math.random() * 360,
         rotationSpeed: (Math.random() - 0.5) * 14,
         wobble: Math.random() * Math.PI * 2,
         wobbleSpeed: 0.08 + Math.random() * 0.08,
-        gravity: 0.38 + Math.random() * 0.16,
+        gravity: 0.32 + Math.random() * 0.14,
         drag: 0.985
       };
     }
 
     function launchConfettiBurst() {
+      getConfettiContext();
       resizeConfettiCanvas();
       const w = window.innerWidth;
       const h = window.innerHeight;
 
-      // Cannon Left: Firing up-right
-      for (let i = 0; i < 95; i++) {
-        confettiParticles.push(createConfettiPiece(w * 0.08, h + 15, -65 + (Math.random() - 0.5) * 45, [20, 36]));
+      // Left Cannon: Points UP and blasts towards the ceiling/sky first
+      for (let i = 0; i < 135; i++) {
+        confettiParticles.push(createConfettiPiece(w * 0.10, h * 0.86, -68 + (Math.random() - 0.5) * 40, [24, 42]));
       }
 
-      // Cannon Right: Firing up-left
-      for (let i = 0; i < 95; i++) {
-        confettiParticles.push(createConfettiPiece(w * 0.92, h + 15, -115 + (Math.random() - 0.5) * 45, [20, 36]));
+      // Right Cannon: Points UP and blasts towards the ceiling/sky first
+      for (let i = 0; i < 135; i++) {
+        confettiParticles.push(createConfettiPiece(w * 0.90, h * 0.86, -112 + (Math.random() - 0.5) * 40, [24, 42]));
       }
 
       if (!isConfettiActive) {
@@ -1784,8 +2042,9 @@
     }
 
     function animateConfetti() {
-      if (!confettiCtx || !isConfettiActive) return;
-      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      const ctx = getConfettiContext();
+      if (!ctx || !isConfettiActive) return;
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
 
       for (let i = confettiParticles.length - 1; i >= 0; i--) {
         const p = confettiParticles[i];
@@ -1802,19 +2061,19 @@
           continue;
         }
 
-        confettiCtx.save();
-        confettiCtx.translate(p.x, p.y);
-        confettiCtx.rotate((p.rotation * Math.PI) / 180);
-        confettiCtx.fillStyle = p.color;
-        confettiCtx.fillRect(-p.size / 2, -p.length / 2, p.size, p.length);
-        confettiCtx.restore();
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.length / 2, p.size, p.length);
+        ctx.restore();
       }
 
       if (confettiParticles.length > 0) {
         confettiAnimId = requestAnimationFrame(animateConfetti);
       } else {
         isConfettiActive = false;
-        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
       }
     }
 
@@ -1822,8 +2081,9 @@
       isConfettiActive = false;
       if (confettiAnimId) cancelAnimationFrame(confettiAnimId);
       confettiParticles = [];
-      if (confettiCtx && confettiCanvas) {
-        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      const ctx = getConfettiContext();
+      if (ctx && confettiCanvas) {
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
       }
     }
 
@@ -1834,22 +2094,35 @@
     let finaleTimer1 = null;
     let finaleTimer2 = null;
     let finaleTimer3 = null;
+    let finaleTimerBadge = null;
     let isFinaleActive = false;
+    let isChampionsCeremonyActive = false;
+    let lastResolvedFinalTeams = null;
 
     function resetFinaleUI() {
       if (finaleIntervalId) clearInterval(finaleIntervalId);
       if (finaleTimer1) clearTimeout(finaleTimer1);
       if (finaleTimer2) clearTimeout(finaleTimer2);
       if (finaleTimer3) clearTimeout(finaleTimer3);
+      if (finaleTimerBadge) clearTimeout(finaleTimerBadge);
       finaleIntervalId = null;
       finaleTimer1 = null;
       finaleTimer2 = null;
       finaleTimer3 = null;
+      finaleTimerBadge = null;
       isFinaleActive = false;
+      isChampionsCeremonyActive = false;
+      lastResolvedFinalTeams = null;
 
       const podiumStage = document.getElementById('podium-stage');
       if (podiumStage) podiumStage.classList.remove('active');
+      const finaleBadge = document.getElementById('finale-badge');
+      if (finaleBadge) finaleBadge.className = 'finale-badge-container';
+      hideRoundTransition();
       stopConfetti();
+      renderPodiumMembers('podium-members-1', []);
+      renderPodiumMembers('podium-members-2', []);
+      renderPodiumMembers('podium-members-3', []);
 
       const tbody = document.getElementById('leaderboard-body');
       if (tbody) {
@@ -1933,14 +2206,27 @@
         try {
           const elapsed = Date.now() - startTime;
           if (elapsed < shuffleDurationMs) {
-            // Permute array randomly
-            const shuffled = [...sortedTeams];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
+            // Dynamic suspense points for Round 5 and Total
+            const possibleR5 = [10, 20, 25, 30, 40, 50, 60];
+            const shuffled = sortedTeams.map(t => {
+              const base1to4 = (t.rounds[0] || 0) + (t.rounds[1] || 0) + (t.rounds[2] || 0) + (t.rounds[3] || 0);
+              const randR5 = possibleR5[Math.floor(Math.random() * possibleR5.length)];
+              const tempTotal = base1to4 + randR5;
+              const tempRounds = [...t.rounds];
+              tempRounds[4] = randR5;
+              return {
+                ...t,
+                rounds: tempRounds,
+                total: tempTotal,
+                revealR5: true
+              };
+            });
+
+            // Sort by dynamic temporary total so positions follow the changing scores
+            shuffled.sort((a, b) => b.total - a.total);
             shuffled.forEach((t, i) => t.rank = i + 1);
-            updateLeaderboardWithAnimation(shuffled, true);
+
+            updateLeaderboardWithAnimation(shuffled, true, '0.92s cubic-bezier(0.25, 1, 0.5, 1)');
           } else {
             // 5 seconds elapsed! Halt shuffle
             clearInterval(finaleIntervalId);
@@ -1948,7 +2234,9 @@
 
             // 3. Settle to verified final true rankings slowly & gracefully!
             updateLeaderboardWithAnimation(sortedTeams, false, '3.2s cubic-bezier(0.2, 0.8, 0.25, 1)');
-            setSyncBadge('🏆 RESOLVED', '#ffd700');
+            setSyncBadge('🏆 FINAL STANDINGS', '#ffd700');
+            lastResolvedFinalTeams = sortedTeams;
+            highlightActiveRound(0);
 
             // Flash rows with celebratory gold glow
             if (tbody) {
@@ -1958,64 +2246,127 @@
               });
             }
 
-            // 4. Keep scoreboard fully visible for 7.5s (3.2s slow glide + 4.3s display) so everyone sees final scores!
-            finaleTimer1 = setTimeout(() => {
-              try {
-                const hw = document.getElementById('hero-headtag-wrapper');
-                const tc = document.querySelector('.points-card');
-                if (hw) hw.classList.add('vanish');
-                if (tc) tc.classList.add('exit-down');
-
-                // 5. Rise the Podium
-                finaleTimer2 = setTimeout(() => {
-                  try {
-                    const top1 = sortedTeams[0] || { team: '1st Place', total: 0 };
-                    const top2 = sortedTeams[1] || { team: '2nd Place', total: 0 };
-                    const top3 = sortedTeams[2] || { team: '3rd Place', total: 0 };
-
-                    const elT1 = document.getElementById('podium-team-1');
-                    const elS1 = document.getElementById('podium-score-1');
-                    const elT2 = document.getElementById('podium-team-2');
-                    const elS2 = document.getElementById('podium-score-2');
-                    const elT3 = document.getElementById('podium-team-3');
-                    const elS3 = document.getElementById('podium-score-3');
-
-                    if (elT1) elT1.textContent = top1.team;
-                    if (elS1) elS1.textContent = top1.total + ' pts';
-                    if (elT2) elT2.textContent = top2.team;
-                    if (elS2) elS2.textContent = top2.total + ' pts';
-                    if (elT3) elT3.textContent = top3.team;
-                    if (elS3) elS3.textContent = top3.total + ' pts';
-
-                    const podiumStage = document.getElementById('podium-stage');
-                    if (podiumStage) podiumStage.classList.add('active');
-
-                    // 6. Burst Confetti Poppers!
-                    finaleTimer3 = setTimeout(() => {
-                      try {
-                        launchConfettiBurst();
-                        setTimeout(launchConfettiBurst, 600);
-                        setTimeout(launchConfettiBurst, 1500);
-                        setSyncBadge('🎉 CHAMPIONS', '#00ff88');
-                      } catch (e) {
-                        console.error('Confetti error:', e);
-                      }
-                    }, 400);
-
-                  } catch (e) {
-                    console.error('Podium error:', e);
-                  }
-                }, 600);
-
-              } catch (e) {
-                console.error('Table exit error:', e);
-              }
-            }, 7500);
+            // Stops here! Leaderboard stays displayed until host types 'CHAMPIONS' (or 'CHAMPLIONS').
           }
         } catch (e) {
           console.error('Shuffle interval error:', e);
         }
-      }, 220);
+      }, 1000);
+    }
+
+    // Triggered when host sends 'CHAMPIONS' (or 'CHAMPLIONS')
+    function triggerChampionsCeremony(teamsData) {
+      if (isChampionsCeremonyActive) return;
+      isChampionsCeremonyActive = true;
+      isFinaleActive = true;
+      isRound5Active = false;
+
+      console.log('[CHAMPIONS CEREMONY] Launching Champions ceremony...');
+      setSyncBadge('CHAMPIONS', '#ffd700');
+      fetchTeamMembers();
+
+      const welcomeTag = document.getElementById('standby-welcome-tag');
+      if (welcomeTag) welcomeTag.classList.add('hidden');
+      hideRoundTransition();
+
+      // If shuffle was still running, stop it
+      if (finaleIntervalId) {
+        clearInterval(finaleIntervalId);
+        finaleIntervalId = null;
+      }
+
+      const sourceTeams = lastResolvedFinalTeams || ((teamsData && teamsData.length) ? teamsData : (latestRawTeamsData || currentLeaderboard));
+      const sortedTeams = sourceTeams.map(t => {
+        const rawRounds = (t.fullRounds && t.fullRounds.length === 5) ? t.fullRounds : t.rounds;
+        const validRounds = rawRounds.map(r => {
+          const n = parseFloat(r);
+          return isNaN(n) ? 0 : n;
+        });
+        const computedTotal = (typeof t.fullTotal === 'number' && !isNaN(t.fullTotal) && t.fullTotal > 0)
+          ? t.fullTotal
+          : ((typeof t.total === 'number' && !isNaN(t.total) && t.total > 0)
+              ? t.total
+              : validRounds.reduce((a, b) => a + b, 0));
+        return {
+          team: t.team,
+          rounds: validRounds,
+          total: computedTotal,
+          revealR5: true
+        };
+      });
+      sortedTeams.sort((a, b) => b.total - a.total);
+      sortedTeams.forEach((t, idx) => t.rank = idx + 1);
+
+      try {
+        // 1. Table disappears (exits down)
+        const hw = document.getElementById('hero-headtag-wrapper');
+        const tc = document.querySelector('.points-card');
+        if (hw) hw.classList.add('vanish');
+        if (tc) tc.classList.add('exit-down');
+
+        // 2. Pop Congratulations Badge to screen center
+        const finaleBadge = document.getElementById('finale-badge');
+        if (finaleBadge) {
+          finaleBadge.className = 'finale-badge-container at-center';
+        }
+
+        // 3. After center display (850ms), spin & glide up to top
+        if (finaleTimerBadge) clearTimeout(finaleTimerBadge);
+        finaleTimerBadge = setTimeout(() => {
+          if (finaleBadge) {
+            finaleBadge.className = 'finale-badge-container spin-top';
+          }
+
+          // 4. Rise the Podium when badge completes spin & reaches top
+          if (finaleTimer2) clearTimeout(finaleTimer2);
+          finaleTimer2 = setTimeout(() => {
+            try {
+              const top1 = sortedTeams[0] || { team: '1st Place', total: 0 };
+              const top2 = sortedTeams[1] || { team: '2nd Place', total: 0 };
+              const top3 = sortedTeams[2] || { team: '3rd Place', total: 0 };
+
+              const elT1 = document.getElementById('podium-team-1');
+              const elS1 = document.getElementById('podium-score-1');
+              const elT2 = document.getElementById('podium-team-2');
+              const elS2 = document.getElementById('podium-score-2');
+              const elT3 = document.getElementById('podium-team-3');
+              const elS3 = document.getElementById('podium-score-3');
+
+              if (elT1) elT1.textContent = top1.team;
+              if (elS1) elS1.textContent = top1.total + ' pts';
+              if (elT2) elT2.textContent = top2.team;
+              if (elS2) elS2.textContent = top2.total + ' pts';
+              if (elT3) elT3.textContent = top3.team;
+              if (elS3) elS3.textContent = top3.total + ' pts';
+
+              // Render Contestant Members on Pedestals
+              renderPodiumMembers('podium-members-1', getMembersForTeam(top1.team));
+              renderPodiumMembers('podium-members-2', getMembersForTeam(top2.team));
+              renderPodiumMembers('podium-members-3', getMembersForTeam(top3.team));
+
+              const podiumStage = document.getElementById('podium-stage');
+              if (podiumStage) podiumStage.classList.add('active');
+
+              // 5. Burst Confetti Poppers
+              if (finaleTimer3) clearTimeout(finaleTimer3);
+              finaleTimer3 = setTimeout(() => {
+                try {
+                  launchConfettiBurst();
+                  setSyncBadge('CHAMPIONS', '#00ff88');
+                } catch (e) {
+                  console.error('Confetti error:', e);
+                }
+              }, 1000);
+
+            } catch (e) {
+              console.error('Podium error:', e);
+            }
+          }, 1250); // Wait for 1.3s 3D spin-to-top animation
+        }, 850); // 850ms at center
+
+      } catch (e) {
+        console.error('Champions ceremony error:', e);
+      }
     }
 
     // Reset to Standby State
@@ -2061,7 +2412,7 @@
       heroWrapper.style.transition = '';
 
       isIntroPlayed = false;
-      document.querySelectorAll('.round-pill').forEach(p => p.classList.remove('active-round'));
+      highlightActiveRound(0);
     }
 
     // Animation Orchestration (Triggered by 'START')
@@ -2151,6 +2502,84 @@
     const SHEET_ID = '1QVBnyGB20lW2_LnTtZyy8AML9HXpm6smeq9HziQ8BcE';
     const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
     const GVIZ_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+    const TEAM_MEMBERS_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=128040167`;
+    let cachedTeamMembers = {};
+
+    function parseTeamMembersCSV(csvText) {
+      if (!csvText) return {};
+      const lines = csvText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+      if (lines.length < 2) return {};
+
+      const headers = lines[0].split(',').map(h => h.replace(/^"|"$/g, '').trim().toUpperCase());
+      const colToTeam = {};
+      const teamMembers = {};
+
+      for (let i = 0; i < headers.length; i++) {
+        const h = headers[i];
+        if (h && h !== 'NO' && h !== '#' && h !== 'SL' && h !== 'SL NO') {
+          colToTeam[i] = h;
+          teamMembers[h] = [];
+        }
+      }
+
+      for (let r = 1; r < lines.length; r++) {
+        const cols = lines[r].split(',').map(c => c.replace(/^"|"$/g, '').trim());
+        for (let c = 0; c < cols.length; c++) {
+          const teamKey = colToTeam[c];
+          const val = cols[c];
+          if (teamKey && val && val !== '') {
+            teamMembers[teamKey].push(val);
+          }
+        }
+      }
+      return teamMembers;
+    }
+
+    async function fetchTeamMembers() {
+      try {
+        const res = await fetch(TEAM_MEMBERS_CSV_URL);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        cachedTeamMembers = parseTeamMembersCSV(text);
+        console.log('[TEAM TAB: Contestants Loaded]', cachedTeamMembers);
+      } catch (err) {
+        console.warn('Could not fetch team contestants CSV:', err);
+      }
+    }
+
+    function getMembersForTeam(teamName) {
+      if (!teamName || !cachedTeamMembers) return [];
+      const clean = teamName.toUpperCase().replace(/[\s\-_]/g, '');
+      for (const [k, v] of Object.entries(cachedTeamMembers)) {
+        const cleanK = k.toUpperCase().replace(/[\s\-_]/g, '');
+        if (clean === cleanK || clean.includes(cleanK) || cleanK.includes(clean)) {
+          return v;
+        }
+      }
+      return [];
+    }
+
+    function renderPodiumMembers(containerId, members) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      if (!members || members.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+      container.style.display = 'flex';
+      members.forEach(name => {
+        const item = document.createElement('div');
+        item.className = 'podium-member-item';
+        item.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          <span>${name}</span>
+        `;
+        container.appendChild(item);
+      });
+    }
 
     function parseCSV(text) {
       const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
@@ -2323,30 +2752,54 @@
             if (actionUpper === 'START') {
               isRound5Active = false;
               if (isFinaleActive) resetFinaleUI();
+              hideRoundTransition();
+              highlightActiveRound(0);
+              currentRoundNum = 0;
               if (!isIntroPlayed) {
                 runIntroAnimation();
               }
             } else if (actionUpper === 'RESET' || actionUpper === 'STANDBY') {
               isRound5Active = false;
               resetToStandby();
+            } else if (actionUpper.includes('CHAMP')) {
+              hideRoundTransition();
+              triggerChampionsCeremony(parsed.teams);
             } else if (actionUpper.includes('END ROUND 5') || actionUpper.includes('ROUND 5 END') || actionUpper.includes('END ROUNT 5') || actionUpper.includes('FINALE') || actionUpper === 'END ROUND' || actionUpper === 'END ROUNT') {
+              hideRoundTransition();
               triggerEndRound5Finale(parsed.teams);
-            } else if (actionUpper.startsWith('START ROUND') || actionUpper.startsWith('ROUND ')) {
+            } else if (actionUpper.includes('END ROUND') || actionUpper.includes('END ROUNT') || actionUpper.startsWith('END ')) {
+              // END ROUND 1, 2, 3, 4: Transition card appears and hangs on screen until next START ROUND
+              const numMatch = actionUpper.match(/\d+/);
+              if (numMatch) {
+                const ended = parseInt(numMatch[0], 10);
+                if (ended === 5) {
+                  hideRoundTransition();
+                  triggerEndRound5Finale(parsed.teams);
+                } else {
+                  showRoundTransition(ended, ended + 1);
+                }
+              }
+            } else if (actionUpper.startsWith('START ROUND') || actionUpper.startsWith('START ROUNT') || actionUpper.startsWith('ROUND ') || actionUpper.startsWith('START ')) {
               if (isFinaleActive) resetFinaleUI();
               const numMatch = actionUpper.match(/\d+/);
               if (numMatch) {
                 const targetRound = parseInt(numMatch[0], 10);
-                if (targetRound === 5) {
-                  isRound5Active = true;
+                if (targetRound === 1) {
+                  // Round 1 Start: show transition card banner with timer as before
+                  if (!isIntroPlayed) {
+                    runIntroAnimation();
+                    setTimeout(() => triggerRoundAnnouncement(null, 1), 2500);
+                  } else {
+                    triggerRoundAnnouncement(null, 1);
+                  }
                 } else {
-                  isRound5Active = false;
-                }
-                const prev = targetRound > 1 ? targetRound - 1 : null;
-                if (!isIntroPlayed) {
-                  runIntroAnimation();
-                  setTimeout(() => triggerRoundAnnouncement(prev, targetRound), 3300);
-                } else {
-                  triggerRoundAnnouncement(prev, targetRound);
+                  // Rounds 2, 3, 4, 5 Start: dismisses transition and starts round
+                  if (!isIntroPlayed) {
+                    runIntroAnimation();
+                    setTimeout(() => startRound(targetRound), 2500);
+                  } else {
+                    startRound(targetRound);
+                  }
                 }
               }
             }
@@ -2386,6 +2839,9 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderLeaderboard(currentLeaderboard);
       resetToStandby(); // Wait in standby for Google Sheet 'START' command
+
+      // Load contestant members from TEAM sheet tab (gid=128040167)
+      fetchTeamMembers();
 
       // Start live polling every 1.5s
       pollGoogleSheet();
@@ -2448,8 +2904,41 @@
   <!-- Round Transition Announcement Overlay -->
   <div id="round-announcement-overlay" class="round-announcement-overlay">
     <div class="round-banner-card">
-      <div class="round-banner-tag">⚡ ROUND TRANSITION ⚡</div>
-      <div class="round-banner-prev" id="round-banner-prev">END OF ROUND 1</div>
+      <!-- Perched Royal 3D Gold Crown on Announcement Card -->
+      <div class="round-card-crown">
+        <svg viewBox="0 0 70 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="banner-crown-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fffbeb"/>
+              <stop offset="25%" stop-color="#fef08a"/>
+              <stop offset="55%" stop-color="#f59e0b"/>
+              <stop offset="85%" stop-color="#d97706"/>
+              <stop offset="100%" stop-color="#78350f"/>
+            </linearGradient>
+            <linearGradient id="banner-gem-red" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f87171"/>
+              <stop offset="100%" stop-color="#b91c1c"/>
+            </linearGradient>
+            <linearGradient id="banner-gem-green" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6ee7b7"/>
+              <stop offset="100%" stop-color="#047857"/>
+            </linearGradient>
+          </defs>
+          <!-- Base rim -->
+          <path d="M10 36 C10 34, 13 33, 16 33 L54 33 C57 33, 60 34, 60 36 L58 43 C58 44, 55 45, 52 45 L18 45 C15 45, 12 44, 12 43 Z" fill="url(#banner-crown-gold)" stroke="#fcd34d" stroke-width="1"/>
+          <!-- Gems on rim -->
+          <circle cx="21" cy="39" r="2.6" fill="url(#banner-gem-red)" stroke="#ffffff" stroke-width="0.5"/>
+          <circle cx="35" cy="39" r="3" fill="url(#banner-gem-green)" stroke="#ffffff" stroke-width="0.5"/>
+          <circle cx="49" cy="39" r="2.6" fill="url(#banner-gem-red)" stroke="#ffffff" stroke-width="0.5"/>
+          <!-- Crown peaks -->
+          <path d="M14 33 L14 18 L24 29 L35 10 L46 29 L56 18 L56 33 Z" fill="url(#banner-crown-gold)" stroke="#fcd34d" stroke-width="1"/>
+          <!-- Jewels on peak tips -->
+          <circle cx="14" cy="18" r="3" fill="url(#banner-gem-red)" stroke="#ffffff" stroke-width="0.6"/>
+          <circle cx="35" cy="10" r="4.2" fill="url(#banner-gem-red)" stroke="#ffffff" stroke-width="0.8"/>
+          <circle cx="56" cy="18" r="3" fill="url(#banner-gem-red)" stroke="#ffffff" stroke-width="0.6"/>
+        </svg>
+      </div>
+      <div class="round-banner-prev" id="round-banner-prev">END OF BRAIN BURST</div>
       <div class="round-banner-arrow-wrap">
         <svg class="round-lightning-arrow" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Left lightning spark -->
@@ -2470,7 +2959,7 @@
           </defs>
         </svg>
       </div>
-      <div class="round-banner-next" id="round-banner-next">STARTING ROUND 2</div>
+      <div class="round-banner-next" id="round-banner-next">STARTING BEAT THE CLOCK</div>
       <div class="round-banner-sub">GET READY CONTESTANTS!</div>
     </div>
   </div>
@@ -2482,149 +2971,341 @@
     <span class="sync-action-badge" id="sync-action-badge">WAITING</span>
   </div>
 
-  <!-- Confetti Popper Canvas -->
-  <canvas id="confetti-canvas"></canvas>
+  <!-- Congratulations Finale Badge -->
+  <div id="finale-badge" class="finale-badge-container">
+    <img src="congratulations_badge.png" alt="Congratulations Badge">
+  </div>
 
   <!-- Olympic / Championship Podium Stage -->
   <div id="podium-stage" class="podium-stage">
-    <div class="podium-header">
-      <div class="podium-header-badge">★ GRAND FINALE CHAMPIONS ★</div>
-      <div class="podium-header-title">MEGA QUIZ WINNERS</div>
-    </div>
-
-    <div class="podium-columns-container">
-      <!-- 2ND PLACE (SILVER - LEFT) -->
-      <div class="podium-col podium-col-2">
-        <div class="podium-trophy-box">
-          <svg class="podium-trophy-svg" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Laurel Left -->
-            <path d="M45,115 C35,95 35,65 55,42 C54,48 56,54 60,58 C50,70 50,90 62,106 Z" fill="url(#laurel-silver)"/>
-            <path d="M38,85 C28,70 34,50 48,35 C48,42 52,48 57,51 C48,62 46,75 53,87 Z" fill="url(#laurel-silver)"/>
-            <path d="M48,60 C42,46 50,28 66,20 C64,28 67,35 73,38 C62,46 58,55 62,65 Z" fill="url(#laurel-silver)"/>
-            <!-- Laurel Right -->
-            <path d="M155,115 C165,95 165,65 145,42 C146,48 144,54 140,58 C150,70 150,90 138,106 Z" fill="url(#laurel-silver)"/>
-            <path d="M162,85 C172,70 166,50 152,35 C152,42 148,48 143,51 C152,62 154,75 147,87 Z" fill="url(#laurel-silver)"/>
-            <path d="M152,60 C158,46 150,28 134,20 C136,28 133,35 127,38 C138,46 142,55 138,65 Z" fill="url(#laurel-silver)"/>
-            <!-- Trophy Cup Body -->
-            <path d="M72,25 L128,25 C128,25 130,70 100,82 C70,70 72,25 72,25 Z" fill="url(#cup-silver)"/>
-            <!-- Handles -->
-            <path d="M72,32 C52,32 50,60 74,68 L73,63 C58,56 58,37 72,37 Z" fill="url(#cup-silver)"/>
-            <path d="M128,32 C148,32 150,60 126,68 L127,63 C142,56 142,37 128,37 Z" fill="url(#cup-silver)"/>
-            <!-- Stem & Base -->
-            <path d="M94,82 L106,82 L108,98 L92,98 Z" fill="url(#cup-silver)"/>
-            <path d="M82,98 L118,98 L122,108 L78,108 Z" fill="url(#cup-silver)"/>
-            <!-- Pedestal Base -->
-            <rect x="74" y="108" width="52" height="18" rx="3" fill="#0d1b2a" stroke="#7bc5fe" stroke-width="1.5"/>
+    <main class="stage">
+      <!-- 2ND PLACE -->
+      <div class="pedestal-unit silver">
+        <div class="trophy-slot">
+          <svg viewBox="0 0 160 160" fill="none">
             <defs>
-              <linearGradient id="cup-silver" x1="70" y1="20" x2="130" y2="105" gradientUnits="userSpaceOnUse">
+              <linearGradient id="sChalice" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#334657"/>
+                <stop offset="18%" stop-color="#8fa6bd"/>
+                <stop offset="42%" stop-color="#ffffff"/>
+                <stop offset="68%" stop-color="#b0cbdf"/>
+                <stop offset="88%" stop-color="#556c82"/>
+                <stop offset="100%" stop-color="#263645"/>
+              </linearGradient>
+              <linearGradient id="sInterior" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1e2c38"/>
+                <stop offset="100%" stop-color="#465e75"/>
+              </linearGradient>
+              <linearGradient id="sHandle" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="40%" stop-color="#c5d8f6"/>
-                <stop offset="80%" stop-color="#7ba4d6"/>
-                <stop offset="100%" stop-color="#3d5a80"/>
+                <stop offset="35%" stop-color="#b8d3ec"/>
+                <stop offset="75%" stop-color="#415a73"/>
+                <stop offset="100%" stop-color="#d4e8fa"/>
               </linearGradient>
-              <linearGradient id="laurel-silver" x1="30" y1="20" x2="170" y2="120" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#e0f2fe"/>
-                <stop offset="50%" stop-color="#90caf9"/>
-                <stop offset="100%" stop-color="#42a5f5"/>
+              <linearGradient id="sBase" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#243442"/>
+                <stop offset="25%" stop-color="#7391ad"/>
+                <stop offset="50%" stop-color="#ffffff"/>
+                <stop offset="75%" stop-color="#7391ad"/>
+                <stop offset="100%" stop-color="#202d3a"/>
               </linearGradient>
+              <radialGradient id="sHalo" cx="50%" cy="45%" r="50%">
+                <stop offset="0%" stop-color="#a0d7ff" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#3a75a4" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="sLaurel" x1="0%" y1="100%" x2="50%" y2="0%">
+                <stop offset="0%" stop-color="#3a4f63"/>
+                <stop offset="35%" stop-color="#8fa6bd"/>
+                <stop offset="65%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#a6c0d7"/>
+              </linearGradient>
+              <g id="sLeaf">
+                <path d="M0 0 C-3.5 -5 -3.5 -11 0 -15 C3.5 -11 3.5 -5 0 0 Z" fill="url(#sLaurel)"/>
+                <path d="M0 0 L0 -14" stroke="#ffffff" stroke-width="0.8" opacity="0.8"/>
+              </g>
+              <g id="sWing">
+                <path d="M66 128 C42 124 16 102 14 68 C13 46 22 28 32 18" stroke="url(#sLaurel)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <use href="#sLeaf" transform="translate(58, 124) rotate(-65) scale(0.9)"/>
+                <use href="#sLeaf" transform="translate(58, 124) rotate(-20) scale(0.85)"/>
+                <use href="#sLeaf" transform="translate(44, 115) rotate(-60) scale(0.95)"/>
+                <use href="#sLeaf" transform="translate(44, 115) rotate(-15) scale(0.9)"/>
+                <use href="#sLeaf" transform="translate(31, 102) rotate(-50) scale(1)"/>
+                <use href="#sLeaf" transform="translate(31, 102) rotate(-5) scale(0.95)"/>
+                <use href="#sLeaf" transform="translate(21, 86) rotate(-35) scale(1.05)"/>
+                <use href="#sLeaf" transform="translate(21, 86) rotate(10) scale(1)"/>
+                <use href="#sLeaf" transform="translate(15, 68) rotate(-20) scale(1.05)"/>
+                <use href="#sLeaf" transform="translate(15, 68) rotate(25) scale(1)"/>
+                <use href="#sLeaf" transform="translate(16, 50) rotate(-5) scale(1)"/>
+                <use href="#sLeaf" transform="translate(16, 50) rotate(40) scale(0.95)"/>
+                <use href="#sLeaf" transform="translate(21, 35) rotate(15) scale(0.95)"/>
+                <use href="#sLeaf" transform="translate(21, 35) rotate(55) scale(0.9)"/>
+                <use href="#sLeaf" transform="translate(29, 23) rotate(32) scale(0.9)"/>
+                <use href="#sLeaf" transform="translate(29, 23) rotate(70) scale(0.85)"/>
+                <use href="#sLeaf" transform="translate(33, 17) rotate(50) scale(0.85)"/>
+              </g>
             </defs>
+            <ellipse cx="80" cy="65" rx="52" ry="42" fill="url(#sHalo)"/>
+            <!-- Laurel Wings -->
+            <use href="#sWing"/>
+            <use href="#sWing" transform="translate(160, 0) scale(-1, 1)"/>
+            <!-- Handles -->
+            <path d="M53 44 C24 44 14 65 24 86 C31 99 47 101 57 96" stroke="url(#sHandle)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+            <path d="M53 44 C26 44 17 64 26 83 C32 95 46 98 55 94" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <path d="M107 44 C136 44 146 65 136 86 C129 99 113 101 103 96" stroke="url(#sHandle)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+            <path d="M107 44 C134 44 143 64 134 83 C128 95 114 98 105 94" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <!-- Bowl -->
+            <path d="M52 38 C52 74 63 96 80 96 C97 96 108 74 108 38 Z" fill="url(#sChalice)"/>
+            <ellipse cx="80" cy="38" rx="28" ry="6.5" fill="url(#sInterior)"/>
+            <ellipse cx="80" cy="38" rx="27.5" ry="6" fill="none" stroke="url(#sHandle)" stroke-width="2"/>
+            <path d="M59 41 C59 68 66 84 73 90 C71 82 67 63 67 41 Z" fill="#ffffff" opacity="0.42"/>
+            <!-- Stem -->
+            <rect x="71" y="96" width="18" height="5" rx="2.5" fill="url(#sBase)"/>
+            <path d="M73 101 C73 111 75 115 69 120 H91 C85 115 87 111 87 101 Z" fill="url(#sChalice)"/>
+            <rect x="66" y="119" width="28" height="6" rx="3" fill="url(#sBase)"/>
+            <!-- Tiered Base -->
+            <path d="M56 125 L104 125 L108 133 L52 133 Z" fill="url(#sBase)"/>
+            <rect x="44" y="133" width="72" height="13" rx="3" fill="url(#sBase)"/>
+            <rect x="42" y="145" width="76" height="4" rx="2" fill="url(#sChalice)"/>
+            <line x1="46" y1="134" x2="114" y2="134" stroke="#ffffff" stroke-width="1.4" opacity="0.8"/>
+            <!-- Star -->
+            <polygon points="80,55 83,64 92,64 85,70 87,79 80,74 73,79 75,70 68,64 77,64" fill="#ffffff" stroke="#3b536b" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))"/>
+            <!-- Sparkle -->
+            <path d="M52 35 Q52 30 55 30 Q52 30 52 25 Q52 30 49 30 Q52 30 52 35 Z" fill="#ffffff" opacity="0.95"/>
+            <circle cx="52" cy="30" r="1.5" fill="#ffffff"/>
           </svg>
         </div>
-        <div class="podium-box">
-          <div class="podium-rank-num">2</div>
-          <div class="podium-team-name" id="podium-team-2">Team Name</div>
-          <div class="podium-score-pill" id="podium-score-2">0 pts</div>
+        <div class="cornice-top"></div>
+        <div class="cornice-sub"></div>
+        <div class="pedestal-body">
+          <div class="rank-shield">2</div>
+          <div class="inner-panel">
+            <div class="team-label" id="podium-team-2">Team-G</div>
+            <div class="pts-badge" id="podium-score-2">60 pts</div>
+            <div class="podium-members-list" id="podium-members-2"></div>
+          </div>
         </div>
+        <div class="plinth-1"></div>
+        <div class="plinth-2"></div>
       </div>
 
-      <!-- 1ST PLACE (GOLD - CENTER) -->
-      <div class="podium-col podium-col-1">
-        <div class="podium-trophy-box">
-          <svg class="podium-trophy-svg" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Laurel Left -->
-            <path d="M45,115 C35,95 35,65 55,42 C54,48 56,54 60,58 C50,70 50,90 62,106 Z" fill="url(#laurel-gold)"/>
-            <path d="M38,85 C28,70 34,50 48,35 C48,42 52,48 57,51 C48,62 46,75 53,87 Z" fill="url(#laurel-gold)"/>
-            <path d="M48,60 C42,46 50,28 66,20 C64,28 67,35 73,38 C62,46 58,55 62,65 Z" fill="url(#laurel-gold)"/>
-            <!-- Laurel Right -->
-            <path d="M155,115 C165,95 165,65 145,42 C146,48 144,54 140,58 C150,70 150,90 138,106 Z" fill="url(#laurel-gold)"/>
-            <path d="M162,85 C172,70 166,50 152,35 C152,42 148,48 143,51 C152,62 154,75 147,87 Z" fill="url(#laurel-gold)"/>
-            <path d="M152,60 C158,46 150,28 134,20 C136,28 133,35 127,38 C138,46 142,55 138,65 Z" fill="url(#laurel-gold)"/>
-            <!-- Trophy Cup Body -->
-            <path d="M72,25 L128,25 C128,25 130,70 100,82 C70,70 72,25 72,25 Z" fill="url(#cup-gold)"/>
-            <!-- Handles -->
-            <path d="M72,32 C52,32 50,60 74,68 L73,63 C58,56 58,37 72,37 Z" fill="url(#cup-gold)"/>
-            <path d="M128,32 C148,32 150,60 126,68 L127,63 C142,56 142,37 128,37 Z" fill="url(#cup-gold)"/>
-            <!-- Stem & Base -->
-            <path d="M94,82 L106,82 L108,98 L92,98 Z" fill="url(#cup-gold)"/>
-            <path d="M82,98 L118,98 L122,108 L78,108 Z" fill="url(#cup-gold)"/>
-            <!-- Pedestal Base -->
-            <rect x="74" y="108" width="52" height="18" rx="3" fill="#181308" stroke="#ffd700" stroke-width="1.5"/>
+      <!-- 1ST PLACE -->
+      <div class="pedestal-unit gold">
+        <div class="trophy-slot">
+          <svg viewBox="0 0 160 160" fill="none">
             <defs>
-              <linearGradient id="cup-gold" x1="70" y1="20" x2="130" y2="105" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#fff5a0"/>
-                <stop offset="35%" stop-color="#ffd700"/>
-                <stop offset="75%" stop-color="#f59e0b"/>
-                <stop offset="100%" stop-color="#b45309"/>
+              <linearGradient id="gChalice" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8a4b00"/>
+                <stop offset="18%" stop-color="#e5a017"/>
+                <stop offset="40%" stop-color="#fff8cc"/>
+                <stop offset="65%" stop-color="#f3b216"/>
+                <stop offset="85%" stop-color="#b86c00"/>
+                <stop offset="100%" stop-color="#683200"/>
               </linearGradient>
-              <linearGradient id="laurel-gold" x1="30" y1="20" x2="170" y2="120" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffe57f"/>
-                <stop offset="50%" stop-color="#ffd700"/>
-                <stop offset="100%" stop-color="#d97706"/>
+              <linearGradient id="gInterior" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#4d2600"/>
+                <stop offset="100%" stop-color="#965903"/>
               </linearGradient>
+              <linearGradient id="gHandle" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff6bd"/>
+                <stop offset="38%" stop-color="#e5a017"/>
+                <stop offset="78%" stop-color="#804500"/>
+                <stop offset="100%" stop-color="#ffd452"/>
+              </linearGradient>
+              <linearGradient id="gBase" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#633200"/>
+                <stop offset="25%" stop-color="#d69212"/>
+                <stop offset="50%" stop-color="#fffae0"/>
+                <stop offset="75%" stop-color="#d69212"/>
+                <stop offset="100%" stop-color="#542a00"/>
+              </linearGradient>
+              <radialGradient id="gHalo" cx="50%" cy="45%" r="50%">
+                <stop offset="0%" stop-color="#ffe066" stop-opacity="0.65"/>
+                <stop offset="100%" stop-color="#ff9900" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gLaurel" x1="0%" y1="100%" x2="50%" y2="0%">
+                <stop offset="0%" stop-color="#8a4f00"/>
+                <stop offset="30%" stop-color="#e5a017"/>
+                <stop offset="65%" stop-color="#fff4a3"/>
+                <stop offset="100%" stop-color="#b87200"/>
+              </linearGradient>
+              <g id="gLeaf">
+                <path d="M0 0 C-3.5 -5 -3.5 -11 0 -15 C3.5 -11 3.5 -5 0 0 Z" fill="url(#gLaurel)"/>
+                <path d="M0 0 L0 -14" stroke="#fffde0" stroke-width="0.8" opacity="0.8"/>
+              </g>
+              <g id="gWing">
+                <path d="M66 128 C42 124 16 102 14 68 C13 46 22 28 32 18" stroke="url(#gLaurel)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <use href="#gLeaf" transform="translate(58, 124) rotate(-65) scale(0.9)"/>
+                <use href="#gLeaf" transform="translate(58, 124) rotate(-20) scale(0.85)"/>
+                <use href="#gLeaf" transform="translate(44, 115) rotate(-60) scale(0.95)"/>
+                <use href="#gLeaf" transform="translate(44, 115) rotate(-15) scale(0.9)"/>
+                <use href="#gLeaf" transform="translate(31, 102) rotate(-50) scale(1)"/>
+                <use href="#gLeaf" transform="translate(31, 102) rotate(-5) scale(0.95)"/>
+                <use href="#gLeaf" transform="translate(21, 86) rotate(-35) scale(1.05)"/>
+                <use href="#gLeaf" transform="translate(21, 86) rotate(10) scale(1)"/>
+                <use href="#gLeaf" transform="translate(15, 68) rotate(-20) scale(1.05)"/>
+                <use href="#gLeaf" transform="translate(15, 68) rotate(25) scale(1)"/>
+                <use href="#gLeaf" transform="translate(16, 50) rotate(-5) scale(1)"/>
+                <use href="#gLeaf" transform="translate(16, 50) rotate(40) scale(0.95)"/>
+                <use href="#gLeaf" transform="translate(21, 35) rotate(15) scale(0.95)"/>
+                <use href="#gLeaf" transform="translate(21, 35) rotate(55) scale(0.9)"/>
+                <use href="#gLeaf" transform="translate(29, 23) rotate(32) scale(0.9)"/>
+                <use href="#gLeaf" transform="translate(29, 23) rotate(70) scale(0.85)"/>
+                <use href="#gLeaf" transform="translate(33, 17) rotate(50) scale(0.85)"/>
+              </g>
             </defs>
+            <ellipse cx="80" cy="65" rx="55" ry="45" fill="url(#gHalo)"/>
+            <!-- Laurel Wings -->
+            <use href="#gWing"/>
+            <use href="#gWing" transform="translate(160, 0) scale(-1, 1)"/>
+            <!-- Handles -->
+            <path d="M53 44 C24 44 14 65 24 86 C31 99 47 101 57 96" stroke="url(#gHandle)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+            <path d="M53 44 C26 44 17 64 26 83 C32 95 46 98 55 94" stroke="#fff8cf" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <path d="M107 44 C136 44 146 65 136 86 C129 99 113 101 103 96" stroke="url(#gHandle)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+            <path d="M107 44 C134 44 143 64 134 83 C128 95 114 98 105 94" stroke="#fff8cf" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <!-- Bowl -->
+            <path d="M52 38 C52 74 63 96 80 96 C97 96 108 74 108 38 Z" fill="url(#gChalice)"/>
+            <ellipse cx="80" cy="38" rx="28" ry="6.5" fill="url(#gInterior)"/>
+            <ellipse cx="80" cy="38" rx="27.5" ry="6" fill="none" stroke="url(#gHandle)" stroke-width="2"/>
+            <path d="M59 41 C59 68 66 84 73 90 C71 82 67 63 67 41 Z" fill="#ffffff" opacity="0.4"/>
+            <!-- Stem -->
+            <rect x="71" y="96" width="18" height="5" rx="2.5" fill="url(#gBase)"/>
+            <path d="M73 101 C73 111 75 115 69 120 H91 C85 115 87 111 87 101 Z" fill="url(#gChalice)"/>
+            <rect x="66" y="119" width="28" height="6" rx="3" fill="url(#gBase)"/>
+            <!-- Tiered Base -->
+            <path d="M56 125 L104 125 L108 133 L52 133 Z" fill="url(#gBase)"/>
+            <rect x="44" y="133" width="72" height="13" rx="3" fill="url(#gBase)"/>
+            <rect x="42" y="145" width="76" height="4" rx="2" fill="url(#gChalice)"/>
+            <line x1="46" y1="134" x2="114" y2="134" stroke="#ffffff" stroke-width="1.4" opacity="0.85"/>
+            <!-- Star -->
+            <polygon points="80,55 83,64 92,64 85,70 87,79 80,74 73,79 75,70 68,64 77,64" fill="#fff4b3" stroke="#8a4f00" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))"/>
+            <!-- Sparkle -->
+            <path d="M52 35 Q52 30 55 30 Q52 30 52 25 Q52 30 49 30 Q52 30 52 35 Z" fill="#ffffff" opacity="0.95"/>
+            <circle cx="52" cy="30" r="1.5" fill="#ffffff"/>
           </svg>
         </div>
-        <div class="podium-box">
-          <div class="podium-rank-num">1</div>
-          <div class="podium-team-name" id="podium-team-1">Team Name</div>
-          <div class="podium-score-pill" id="podium-score-1">0 pts</div>
+        <div class="cornice-top"></div>
+        <div class="cornice-sub"></div>
+        <div class="pedestal-body">
+          <div class="rank-shield">1</div>
+          <div class="inner-panel">
+            <div class="team-label" id="podium-team-1">Team-F</div>
+            <div class="pts-badge" id="podium-score-1">100 pts</div>
+            <div class="podium-members-list" id="podium-members-1"></div>
+          </div>
         </div>
+        <div class="plinth-1"></div>
+        <div class="plinth-2"></div>
       </div>
 
-      <!-- 3RD PLACE (BRONZE - RIGHT) -->
-      <div class="podium-col podium-col-3">
-        <div class="podium-trophy-box">
-          <svg class="podium-trophy-svg" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Laurel Left -->
-            <path d="M45,115 C35,95 35,65 55,42 C54,48 56,54 60,58 C50,70 50,90 62,106 Z" fill="url(#laurel-bronze)"/>
-            <path d="M38,85 C28,70 34,50 48,35 C48,42 52,48 57,51 C48,62 46,75 53,87 Z" fill="url(#laurel-bronze)"/>
-            <path d="M48,60 C42,46 50,28 66,20 C64,28 67,35 73,38 C62,46 58,55 62,65 Z" fill="url(#laurel-bronze)"/>
-            <!-- Laurel Right -->
-            <path d="M155,115 C165,95 165,65 145,42 C146,48 144,54 140,58 C150,70 150,90 138,106 Z" fill="url(#laurel-bronze)"/>
-            <path d="M162,85 C172,70 166,50 152,35 C152,42 148,48 143,51 C152,62 154,75 147,87 Z" fill="url(#laurel-bronze)"/>
-            <path d="M152,60 C158,46 150,28 134,20 C136,28 133,35 127,38 C138,46 142,55 138,65 Z" fill="url(#laurel-bronze)"/>
-            <!-- Trophy Cup Body -->
-            <path d="M72,25 L128,25 C128,25 130,70 100,82 C70,70 72,25 72,25 Z" fill="url(#cup-bronze)"/>
-            <!-- Handles -->
-            <path d="M72,32 C52,32 50,60 74,68 L73,63 C58,56 58,37 72,37 Z" fill="url(#cup-bronze)"/>
-            <path d="M128,32 C148,32 150,60 126,68 L127,63 C142,56 142,37 128,37 Z" fill="url(#cup-bronze)"/>
-            <!-- Stem & Base -->
-            <path d="M94,82 L106,82 L108,98 L92,98 Z" fill="url(#cup-bronze)"/>
-            <path d="M82,98 L118,98 L122,108 L78,108 Z" fill="url(#cup-bronze)"/>
-            <!-- Pedestal Base -->
-            <rect x="74" y="108" width="52" height="18" rx="3" fill="#241008" stroke="#ff9d5c" stroke-width="1.5"/>
+      <!-- 3RD PLACE -->
+      <div class="pedestal-unit bronze">
+        <div class="trophy-slot">
+          <svg viewBox="0 0 160 160" fill="none">
             <defs>
-              <linearGradient id="cup-bronze" x1="70" y1="20" x2="130" y2="105" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffd5b8"/>
-                <stop offset="35%" stop-color="#ff8a50"/>
-                <stop offset="75%" stop-color="#d84315"/>
-                <stop offset="100%" stop-color="#4e1a05"/>
+              <linearGradient id="bChalice" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#5a2305"/>
+                <stop offset="18%" stop-color="#ba5f26"/>
+                <stop offset="40%" stop-color="#ffdec9"/>
+                <stop offset="65%" stop-color="#c9672b"/>
+                <stop offset="85%" stop-color="#8a3c0f"/>
+                <stop offset="100%" stop-color="#3d1602"/>
               </linearGradient>
-              <linearGradient id="laurel-bronze" x1="30" y1="20" x2="170" y2="120" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#ffcc80"/>
-                <stop offset="50%" stop-color="#ff7043"/>
-                <stop offset="100%" stop-color="#bf360c"/>
+              <linearGradient id="bInterior" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#331101"/>
+                <stop offset="100%" stop-color="#692806"/>
               </linearGradient>
+              <linearGradient id="bHandle" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffdcbe"/>
+                <stop offset="38%" stop-color="#cc6c30"/>
+                <stop offset="78%" stop-color="#692706"/>
+                <stop offset="100%" stop-color="#f5a36c"/>
+              </linearGradient>
+              <linearGradient id="bBase" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#3d1602"/>
+                <stop offset="25%" stop-color="#a84f1b"/>
+                <stop offset="50%" stop-color="#ffe3cf"/>
+                <stop offset="75%" stop-color="#a84f1b"/>
+                <stop offset="100%" stop-color="#331201"/>
+              </linearGradient>
+              <radialGradient id="bHalo" cx="50%" cy="45%" r="50%">
+                <stop offset="0%" stop-color="#ff9a60" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ad460e" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="bLaurel" x1="0%" y1="100%" x2="50%" y2="0%">
+                <stop offset="0%" stop-color="#5a2305"/>
+                <stop offset="35%" stop-color="#cb692d"/>
+                <stop offset="65%" stop-color="#ffdeb8"/>
+                <stop offset="100%" stop-color="#b5581e"/>
+              </linearGradient>
+              <g id="bLeaf">
+                <path d="M0 0 C-3.5 -5 -3.5 -11 0 -15 C3.5 -11 3.5 -5 0 0 Z" fill="url(#bLaurel)"/>
+                <path d="M0 0 L0 -14" stroke="#ffeedd" stroke-width="0.8" opacity="0.8"/>
+              </g>
+              <g id="bWing">
+                <path d="M66 128 C42 124 16 102 14 68 C13 46 22 28 32 18" stroke="url(#bLaurel)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <use href="#bLeaf" transform="translate(58, 124) rotate(-65) scale(0.9)"/>
+                <use href="#bLeaf" transform="translate(58, 124) rotate(-20) scale(0.85)"/>
+                <use href="#bLeaf" transform="translate(44, 115) rotate(-60) scale(0.95)"/>
+                <use href="#bLeaf" transform="translate(44, 115) rotate(-15) scale(0.9)"/>
+                <use href="#bLeaf" transform="translate(31, 102) rotate(-50) scale(1)"/>
+                <use href="#bLeaf" transform="translate(31, 102) rotate(-5) scale(0.95)"/>
+                <use href="#bLeaf" transform="translate(21, 86) rotate(-35) scale(1.05)"/>
+                <use href="#bLeaf" transform="translate(21, 86) rotate(10) scale(1)"/>
+                <use href="#bLeaf" transform="translate(15, 68) rotate(-20) scale(1.05)"/>
+                <use href="#bLeaf" transform="translate(15, 68) rotate(25) scale(1)"/>
+                <use href="#bLeaf" transform="translate(16, 50) rotate(-5) scale(1)"/>
+                <use href="#bLeaf" transform="translate(16, 50) rotate(40) scale(0.95)"/>
+                <use href="#bLeaf" transform="translate(21, 35) rotate(15) scale(0.95)"/>
+                <use href="#bLeaf" transform="translate(21, 35) rotate(55) scale(0.9)"/>
+                <use href="#bLeaf" transform="translate(29, 23) rotate(32) scale(0.9)"/>
+                <use href="#bLeaf" transform="translate(29, 23) rotate(70) scale(0.85)"/>
+                <use href="#bLeaf" transform="translate(33, 17) rotate(50) scale(0.85)"/>
+              </g>
             </defs>
+            <ellipse cx="80" cy="65" rx="52" ry="42" fill="url(#bHalo)"/>
+            <!-- Laurel Wings -->
+            <use href="#bWing"/>
+            <use href="#bWing" transform="translate(160, 0) scale(-1, 1)"/>
+            <!-- Handles -->
+            <path d="M53 44 C24 44 14 65 24 86 C31 99 47 101 57 96" stroke="url(#bHandle)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+            <path d="M53 44 C26 44 17 64 26 83 C32 95 46 98 55 94" stroke="#ffebdb" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <path d="M107 44 C136 44 146 65 136 86 C129 99 113 101 103 96" stroke="url(#bHandle)" stroke-width="8.5" stroke-linecap="round" fill="none"/>
+            <path d="M107 44 C134 44 143 64 134 83 C128 95 114 98 105 94" stroke="#ffebdb" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <!-- Bowl -->
+            <path d="M52 38 C52 74 63 96 80 96 C97 96 108 74 108 38 Z" fill="url(#bChalice)"/>
+            <ellipse cx="80" cy="38" rx="28" ry="6.5" fill="url(#bInterior)"/>
+            <ellipse cx="80" cy="38" rx="27.5" ry="6" fill="none" stroke="url(#bHandle)" stroke-width="2"/>
+            <path d="M59 41 C59 68 66 84 73 90 C71 82 67 63 67 41 Z" fill="#ffffff" opacity="0.38"/>
+            <!-- Stem -->
+            <rect x="71" y="96" width="18" height="5" rx="2.5" fill="url(#bBase)"/>
+            <path d="M73 101 C73 111 75 115 69 120 H91 C85 115 87 111 87 101 Z" fill="url(#bChalice)"/>
+            <rect x="66" y="119" width="28" height="6" rx="3" fill="url(#bBase)"/>
+            <!-- Tiered Base -->
+            <path d="M56 125 L104 125 L108 133 L52 133 Z" fill="url(#bBase)"/>
+            <rect x="44" y="133" width="72" height="13" rx="3" fill="url(#bBase)"/>
+            <rect x="42" y="145" width="76" height="4" rx="2" fill="url(#bChalice)"/>
+            <line x1="46" y1="134" x2="114" y2="134" stroke="#ffffff" stroke-width="1.4" opacity="0.8"/>
+            <!-- Star -->
+            <polygon points="80,55 83,64 92,64 85,70 87,79 80,74 73,79 75,70 68,64 77,64" fill="#ffd9c2" stroke="#662705" stroke-width="1" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.5))"/>
+            <!-- Sparkle -->
+            <path d="M52 35 Q52 30 55 30 Q52 30 52 25 Q52 30 49 30 Q52 30 52 35 Z" fill="#ffffff" opacity="0.95"/>
+            <circle cx="52" cy="30" r="1.5" fill="#ffffff"/>
           </svg>
         </div>
-        <div class="podium-box">
-          <div class="podium-rank-num">3</div>
-          <div class="podium-team-name" id="podium-team-3">Team Name</div>
-          <div class="podium-score-pill" id="podium-score-3">0 pts</div>
+        <div class="cornice-top"></div>
+        <div class="cornice-sub"></div>
+        <div class="pedestal-body">
+          <div class="rank-shield">3</div>
+          <div class="inner-panel">
+            <div class="team-label" id="podium-team-3">Team-E</div>
+            <div class="pts-badge" id="podium-score-3">30 pts</div>
+            <div class="podium-members-list" id="podium-members-3"></div>
+          </div>
         </div>
+        <div class="plinth-1"></div>
+        <div class="plinth-2"></div>
       </div>
-    </div>
+    </main>
   </div>
 </body>
 </html>
